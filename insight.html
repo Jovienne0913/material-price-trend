@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>物料原材料价格趋势库 · 行业分析与建议</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--brand-900:#0B2E59;--brand-700:#14489E;--brand-650:#1D4ED8;--brand-600:#2563EB;--brand-500:#3B82F6;--brand-100:#EFF4FF;--brand-200:#D6E4FB;
+--ink-900:#0F172A;--ink-700:#334155;--ink-500:#64748B;--ink-400:#94A3B8;--ink-100:#F1F5F9;
+--line:#E6EDF6;--bg:#F4F7FC;--surface:#FBFCFE;
+--r-lg:16px;--r-md:12px;--r-pill:999px;
+--sh-sm:0 1px 3px rgba(15,23,42,.06);--sh-md:0 10px 28px rgba(15,23,42,.10);
+--ease:cubic-bezier(.4,0,.2,1);--up:#DC2626;--down:#059669;
+--dg-100:#FEE2E2;--dg-150:#FEF2F2;--dg-300:#FCA5A5;--dg-400:#F87171;--dg-600:#DC2626;--dg-700:#B91C1C;--dg-800:#991B1B;
+--wn-100:#FEF3C7;--wn-300:#FDE68A;--wn-400:#FBBF24;--wn-500:#F59E0B;--wn-600:#D97706;--wn-700:#B45309;--wn-800:#92400E;
+--sf-100:#D1FAE5;--sf-300:#A7F3D0;--sf-400:#34D399;--sf-600:#059669;--sf-700:#047857}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+background:linear-gradient(180deg,#EAF1FC 0%,var(--bg) 340px) repeat-x,var(--bg);
+color:var(--ink-900);line-height:1.62;min-height:100vh;font-size:15px;font-variant-numeric:tabular-nums}
+::selection{background:var(--brand-200);color:var(--brand-900)}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#C3D2EA;border-radius:999px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--brand-500)}
+a{color:var(--brand-600);text-decoration:none}
+a:hover{text-decoration:underline}
+svg text{font-family:inherit}
+.mf-radio{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+/* ---- 顶栏 ---- */
+.kb-topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.kb-topbar-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+.kb-home{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--brand-900);font-size:15px}
+.kb-home:hover{text-decoration:none;opacity:.85}
+.kb-home-logo{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),var(--brand-700));display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 6px 16px rgba(37,99,235,.3)}
+.kb-top-right{display:flex;align-items:center;gap:10px}
+.kb-subnav{display:flex;gap:2px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:3px}
+.kb-subnav-item{display:inline-flex;align-items:center;padding:5px 12px;border-radius:7px;color:var(--brand-100);text-decoration:none;font-weight:500;font-size:.8rem;transition:all .15s;white-space:nowrap}
+.kb-subnav-item:hover{background:rgba(255,255,255,.12)}
+.kb-subnav-item.active{background:#fff;color:var(--brand-900);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.kb-status{font-size:12px;font-weight:600;color:var(--brand-700);background:var(--brand-100);border:1px solid var(--brand-200);border-radius:var(--r-pill);padding:5px 12px;white-space:nowrap}
+.kb-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--brand-700);background:var(--brand-100);border:1px solid var(--brand-200);border-radius:var(--r-pill);padding:6px 14px;transition:transform .15s,border-color .15s}
+.kb-back:hover{border-color:var(--brand-500);transform:translateY(-1px);text-decoration:none}
+.kb-back .arrow{font-size:15px;line-height:1}
+/* ---- 页头 ---- */
+.header{background:linear-gradient(135deg,var(--brand-900) 0%,var(--brand-700) 100%);color:#fff;padding:26px 16px 20px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#3B82F6,#14489E)}
+.header::after{content:"";position:absolute;top:-70%;left:50%;transform:translateX(-50%);width:72%;height:190%;background:radial-gradient(ellipse at center,rgba(96,165,250,.22) 0%,rgba(96,165,250,0) 62%);pointer-events:none}
+.header h1{font-size:1.55rem;font-weight:800;margin-bottom:.35rem;position:relative}
+.header .subtitle{font-size:.88rem;opacity:.9;max-width:820px;margin:0 auto;position:relative}
+.header .badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:20px;padding:.2rem .8rem;font-size:.74rem;margin-top:.65rem;position:relative;backdrop-filter:blur(2px)}
+/* ---- 侧边栏（悬停展开，负边距悬浮不挤压内容） ---- */
+.page-wrap{display:flex;align-items:flex-start}
+.sidebar{position:sticky;top:53px;height:calc(100vh - 53px);width:52px;flex-shrink:0;background:#fff;border-right:1px solid var(--line);overflow:hidden;transition:width .22s var(--ease),margin-right .22s var(--ease);z-index:40}
+.sidebar:hover{width:214px;margin-right:-162px;box-shadow:var(--sh-md)}
+.sb-toggle{display:flex;align-items:center;justify-content:center;width:100%;height:40px;border-bottom:1px solid var(--line);background:var(--surface);color:var(--ink-700)}
+.sb-toggle svg{width:18px;height:18px;flex-shrink:0;transform:rotate(180deg);transition:transform .22s var(--ease)}
+.sidebar:hover .sb-toggle svg{transform:rotate(0deg)}
+.sb-toggle span{margin-left:8px;font-size:12.5px;font-weight:600;color:var(--brand-700);white-space:nowrap;opacity:0;transition:opacity .12s}
+.sidebar:hover .sb-toggle span{opacity:1;transition-delay:.1s}
+.sb-nav{padding:8px 8px 20px}
+.sb-group{margin-bottom:14px}
+.sb-group-title{font-size:10.5px;font-weight:700;color:var(--ink-400);letter-spacing:.05em;padding:0 9px 5px;white-space:nowrap;opacity:0;transition:opacity .12s}
+.sidebar:hover .sb-group-title{opacity:1;transition-delay:.1s}
+.sb-list{list-style:none}
+.sb-list li{margin:2px 0}
+.sb-list a,.sb-mat{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--ink-700);white-space:nowrap;cursor:pointer;transition:background .15s,color .15s}
+.sb-list a:hover,.sb-mat:hover{background:var(--brand-100);color:var(--brand-700);text-decoration:none}
+.sb-ico{width:18px;text-align:center;font-size:14px;flex-shrink:0;color:var(--brand-600)}
+.sb-label{opacity:0;transition:opacity .12s}
+.sidebar:hover .sb-label{opacity:1;transition-delay:.1s}
+.sb-count{margin-left:auto;font-size:10px;font-weight:700;color:var(--ink-400);background:var(--ink-100);border-radius:999px;padding:1px 6px;opacity:0;transition:opacity .12s}
+.sidebar:hover .sb-count{opacity:1;transition-delay:.1s}
+.main-content{flex:1;min-width:0}
+.main-content .container{max-width:1180px;margin:0 auto;padding:0 16px 28px}
+.section-target{scroll-margin-top:64px}
+/* ---- 模块折叠（details/summary 纯CSS，企微兼容） ---- */
+summary{list-style:none;cursor:pointer;-webkit-user-select:none;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary:focus{outline:none}
+.rpt-chev{display:inline-flex;align-items:center;margin-left:auto;font-size:11px;font-weight:700;opacity:.7;transition:transform .18s;flex-shrink:0}
+details[open]>summary>.rpt-chev{transform:rotate(180deg)}
+.ov-sum{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ov-sum:hover{color:var(--brand-900)}
+details:not([open])>summary{margin-bottom:0}
+details.rpt-section>summary.rpt-header:hover{filter:brightness(1.1)}
+details.tbl-wrap:not([open]){padding-bottom:14px}
+details.risk-panel:not([open])>summary{margin-bottom:0}
+/* ---- 分析报告卡 ---- */
+.rpt-section{margin:0 0 12px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-sm);overflow:hidden}
+.rpt-header{display:flex;align-items:center;gap:8px;padding:12px 18px;background:linear-gradient(135deg,var(--brand-900),var(--brand-700));color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.14)}
+.rpt-header .rpt-ico{font-size:18px}
+.rpt-header .rpt-title{font-size:14px;font-weight:700}
+.rpt-header .rpt-badge{margin-left:auto;font-size:11px;font-weight:600;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.rpt-body{padding:14px 18px 16px}
+.rpt-summary{background:var(--brand-100);border:1px solid var(--brand-200);border-radius:var(--r-md);padding:11px 15px;margin-bottom:12px;font-size:.84rem;color:var(--ink-700);line-height:1.65}
+.rpt-summary b{color:var(--brand-900)}
+.rpt-score-card{display:flex;align-items:center;gap:16px;padding:11px 15px;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:12px;background:var(--surface)}
+.rpt-score-val{font-size:28px;font-weight:800;color:var(--brand-900);font-family:ui-monospace,Menlo,Consolas,monospace;min-width:56px;text-align:center}
+.rpt-score-val.low{color:var(--down)}.rpt-score-val.mid{color:var(--wn-500)}.rpt-score-val.high{color:var(--up)}
+.rpt-score-bar-wrap{flex:1}
+.rpt-score-bar-label{font-size:12px;font-weight:600;color:var(--ink-500);margin-bottom:5px}
+.rpt-score-bar{height:8px;border-radius:999px;background:#E6EDF6;overflow:hidden}
+.rpt-score-bar-fill{height:100%;border-radius:999px}
+.rpt-score-bar-fill.low{background:linear-gradient(90deg,var(--sf-600),var(--sf-400))}
+.rpt-score-bar-fill.mid{background:linear-gradient(90deg,var(--wn-500),var(--wn-400))}
+.rpt-score-bar-fill.high{background:linear-gradient(90deg,var(--dg-600),var(--dg-400))}
+.rpt-dim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rpt-dim-card{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;background:var(--surface);transition:border-color .15s,box-shadow .15s}
+.rpt-dim-card:hover{border-color:var(--brand-500);box-shadow:var(--sh-sm)}
+.rpt-dim-head{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px}
+.rpt-dim-name{font-size:13px;font-weight:700;color:var(--brand-900)}
+.rpt-dim-label{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.rpt-dim-label.up,.rpt-dim-label.alert{background:var(--dg-100);color:var(--dg-700)}
+.rpt-dim-label.flat,.rpt-dim-label.watch{background:var(--wn-100);color:var(--wn-700)}
+.rpt-dim-label.down,.rpt-dim-label.safe{background:var(--sf-100);color:var(--sf-700)}
+.rpt-dim-label.track{background:#FFEDD5;color:#C2410C}
+.rpt-dim-score-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rpt-dim-score{font-size:18px;font-weight:800;color:var(--brand-900);min-width:32px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.rpt-dim-bar{flex:1;height:6px;border-radius:999px;background:#E6EDF6;overflow:hidden}
+.rpt-dim-bar-fill{height:100%;border-radius:999px}
+.rpt-dim-bar-fill.low{background:linear-gradient(90deg,var(--sf-600),var(--sf-400))}
+.rpt-dim-bar-fill.mid{background:linear-gradient(90deg,var(--wn-500),var(--wn-400))}
+.rpt-dim-bar-fill.high{background:linear-gradient(90deg,var(--dg-600),var(--dg-400))}
+.rpt-dim-detail{font-size:.78rem;color:var(--ink-700);line-height:1.5}
+.rpt-table{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:4px}
+.rpt-table th{padding:8px 10px;text-align:left;background:var(--brand-100);color:var(--brand-900);font-weight:700;font-size:.76rem;border-bottom:2px solid var(--line)}
+.rpt-table td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.rpt-table tbody tr:hover{background:var(--brand-100)}
+.rpt-table .td-conf{font-weight:700;font-family:ui-monospace,Menlo,Consolas,monospace}
+.rpt-table .td-conf.high{color:var(--down)}
+.rpt-table .td-conf.mid{color:var(--wn-500)}
+.rpt-sub-title{font-size:13px;font-weight:700;color:var(--brand-900);margin:12px 0 10px}
+.rpt-insight-callout{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,#EFF5FF,#F7FAFF);border:1px solid #C7DBFB;border-left:4px solid var(--brand-700);border-radius:var(--r-md);padding:12px 15px;margin-bottom:12px}
+.rpt-insight-callout .ic-ico{font-size:20px;line-height:1}
+.rpt-insight-callout .ic-text{font-size:.88rem;font-weight:600;color:var(--brand-900);line-height:1.6}
+.rpt-takeaways{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rpt-take-card{border:1px solid var(--line);border-left:4px solid var(--brand-600);border-radius:var(--r-md);padding:11px 13px;background:var(--surface);display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,border-color .15s}
+.rpt-take-card:hover{box-shadow:var(--sh-sm);border-color:var(--brand-500);border-left-color:var(--brand-600)}
+.rpt-take-card.lv-act{border-left-color:var(--dg-600);background:#FFF9F9}
+.rpt-take-card.lv-act:hover{border-color:var(--dg-300);border-left-color:var(--dg-600)}
+.rpt-take-card.lv-track{border-left-color:var(--wn-500);background:#FFFCF5}
+.rpt-take-card.lv-track:hover{border-color:#FCD34D;border-left-color:var(--wn-500)}
+.rpt-take-head{display:flex;align-items:center;gap:8px}
+.rpt-take-tag{font-size:11px;font-weight:700;color:#fff;background:var(--brand-700);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.lv-act .rpt-take-tag{background:var(--dg-600)}
+.lv-track .rpt-take-tag{background:var(--wn-600)}
+.lv-watch .rpt-take-tag{background:var(--brand-600)}
+.rpt-take-lv{margin-left:auto;font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:999px;white-space:nowrap;background:var(--brand-100);color:var(--brand-650)}
+.lv-act .rpt-take-lv{background:var(--dg-100);color:var(--dg-700)}
+.lv-track .rpt-take-lv{background:var(--wn-100);color:var(--wn-700)}
+.rpt-take-text{font-size:.8rem;color:var(--ink-700);line-height:1.62;flex:1}
+.rpt-take-text b.tk-num{font-weight:800;color:var(--brand-900);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.rpt-take-act{display:flex;gap:7px;align-items:flex-start;background:var(--brand-100);border:1px solid var(--brand-200);border-radius:8px;padding:7px 10px;font-size:.78rem;font-weight:700;color:var(--brand-900);line-height:1.55}
+.rpt-take-act .ta-ico{flex-shrink:0;font-size:12px;line-height:1.6}
+.lv-act .rpt-take-act{background:var(--dg-100);border-color:var(--dg-300);color:var(--dg-800)}
+.lv-track .rpt-take-act{background:var(--wn-100);border-color:var(--wn-300);color:var(--wn-800)}
+@media(max-width:640px){.rpt-takeaways{grid-template-columns:1fr}}
+/* ---- 风险地图 ---- */
+.risk-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.risk-stat{flex:1;min-width:110px;border:1px solid var(--line);border-radius:var(--r-md);padding:9px 12px;background:var(--surface);text-align:center}
+.risk-stat .rs-num{font-size:22px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace}
+.risk-stat .rs-label{font-size:11px;color:var(--ink-500);margin-top:2px}
+.risk-stat.alert .rs-num{color:var(--dg-600)}
+.risk-stat.track .rs-num{color:#EA580C}
+.risk-stat.watch .rs-num{color:var(--wn-600)}
+.risk-stat.safe .rs-num{color:var(--sf-600)}
+.risk-rows{display:flex;flex-direction:column;gap:8px}
+.risk-row{display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;flex-wrap:wrap}
+.risk-row.top{border-color:var(--brand-500);box-shadow:var(--sh-sm);background:linear-gradient(135deg,#FFF7ED,#FFFBF5)}
+.risk-row .rr-level{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap;min-width:60px;text-align:center}
+.risk-row .rr-level.alert{background:var(--dg-100);color:var(--dg-700)}
+.risk-row .rr-level.track{background:#FFEDD5;color:#C2410C}
+.risk-row .rr-level.watch{background:var(--wn-100);color:var(--wn-700)}
+.risk-row .rr-level.safe{background:var(--sf-100);color:var(--sf-700)}
+.risk-row .rr-name{font-size:13px;font-weight:700;color:var(--brand-900);min-width:160px}
+.risk-row .rr-bar-wrap{flex:1;min-width:120px}
+.risk-row .rr-bar{height:8px;border-radius:999px;background:#E6EDF6;overflow:hidden}
+.risk-row .rr-bar-fill{height:100%;border-radius:999px}
+.risk-row .rr-bar-fill.alert{background:linear-gradient(90deg,var(--dg-600),var(--dg-400))}
+.risk-row .rr-bar-fill.track{background:linear-gradient(90deg,#EA580C,#FB923C)}
+.risk-row .rr-bar-fill.watch{background:linear-gradient(90deg,var(--wn-600),var(--wn-400))}
+.risk-row .rr-bar-fill.safe{background:linear-gradient(90deg,var(--sf-600),var(--sf-400))}
+.risk-row .rr-score{font-size:15px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;min-width:28px;text-align:right;color:var(--brand-900)}
+.risk-row .rr-action{font-size:.76rem;color:var(--ink-500);flex:2;min-width:180px;line-height:1.45}
+/* ---- 走势点评 ---- */
+.trend{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 18px;margin:0 0 12px;box-shadow:var(--sh-sm)}
+.ov-title{font-size:13px;font-weight:700;color:var(--brand-700);letter-spacing:.03em;margin-bottom:12px}
+.trend-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.trend-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:13px 15px;box-shadow:var(--sh-sm);border-top:3px solid var(--brand-500);transition:border-color .15s,box-shadow .15s}
+.trend-card:hover{border-color:var(--brand-500);box-shadow:0 6px 18px rgba(15,23,42,.08)}
+.trend-card-head{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.trend-card-ico{width:28px;height:28px;border-radius:8px;background:var(--brand-100);display:flex;align-items:center;justify-content:center;font-size:15px}
+.trend-card-title{font-size:14px;font-weight:700;color:var(--brand-900)}
+.trend-card-body{font-size:.8rem;color:var(--ink-700);line-height:1.65;margin-bottom:11px}
+.trend-card-body b.trend-num{font-weight:700;color:var(--brand-700)}
+.trend-card-body b.trend-num.up{color:var(--up)}
+.trend-card-body b.trend-num.down{color:var(--down)}
+.trend-advice{background:linear-gradient(135deg,#F0FDF4,#ECFDF5);border:1px solid var(--sf-300);border-left:3px solid var(--sf-600);border-radius:8px;padding:9px 12px;font-size:.78rem;color:#065F46;line-height:1.55}
+.trend-advice .ta-label{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--sf-700);margin-bottom:4px}
+.trend-advice b.trend-num{font-weight:700;color:var(--sf-700)}
+.trend-advice b.trend-num.up{color:var(--dg-700)}
+/* ---- 异动预警 ---- */
+.risk-panel{background:#fff;border:1px solid #FBD5D5;border-left:4px solid var(--dg-600);border-radius:var(--r-lg);padding:14px 18px;margin:0 0 12px;box-shadow:var(--sh-sm)}
+.risk-panel .ov-title{color:var(--dg-700);margin-bottom:4px}
+.risk-sub{font-size:12px;color:var(--ink-500);margin-bottom:10px}
+.risk-list{display:flex;flex-direction:column;gap:8px}
+.risk-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;background:#FFF7F7;border:1px solid #FCE3E3;font-size:.84rem;flex-wrap:wrap}
+.risk-item.alert{background:var(--dg-150);border-color:var(--dg-300)}
+.risk-item .ri-name{font-weight:700;color:var(--brand-900);white-space:nowrap}
+.risk-item .ri-pct{font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.risk-item .ri-note{color:var(--ink-700);margin-left:auto;text-align:right;font-size:.78rem}
+.risk-tag{font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:999px;white-space:nowrap}
+.risk-tag.watch{background:var(--wn-100);color:var(--wn-700)}
+.risk-tag.alert{background:var(--dg-100);color:var(--dg-700)}
+.risk-empty{font-size:.84rem;color:var(--down)}
+/* ---- 历史走势 ---- */
+.hist-section{margin:0 0 12px}
+.hist-title{font-size:13px;font-weight:700;color:var(--brand-700);margin-bottom:11px}
+.hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.hist-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px 14px;box-shadow:var(--sh-sm)}
+.hist-head{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.hist-ico{font-size:17px}
+.hist-head b{font-size:.95rem;color:var(--brand-900)}
+.hist-ref{font-size:.7rem;color:var(--ink-400);margin-left:auto;text-align:right}
+.hist-cur{font-size:1.02rem;font-weight:800;color:var(--brand-900);margin-bottom:9px;font-family:ui-monospace,Menlo,Consolas,monospace;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.hist-cur i{font-style:normal;font-size:.72rem;font-weight:500;color:var(--ink-500)}
+.hist-cur .chg{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:var(--r-pill);background:var(--ink-100);display:inline-flex;align-items:center;gap:4px}
+.hist-cur .chg.up{color:var(--up);background:var(--dg-150)}
+.hist-cur .chg.down{color:var(--down);background:#F0FDF4}
+.hist-cur .chg.flat{color:var(--brand-700);background:var(--brand-100)}
+.hist-cur .chg-label{font-size:.62rem;font-weight:600;color:var(--ink-500)}
+.spark-row{display:flex;gap:12px}
+.spark-col{flex:1;min-width:0}
+.spark-ttl{font-size:.7rem;color:var(--ink-500);margin-bottom:3px}
+.spark-col svg{display:block;width:100%}
+.hist-note{font-size:.72rem;color:var(--ink-700);margin-top:9px;line-height:1.55;border-top:1px dashed var(--line);padding-top:8px}
+/* ---- 报价明细 ---- */
+.tbl-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 14px 16px;box-shadow:var(--sh-sm);margin-bottom:12px}
+.sc-overview{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;margin-bottom:12px}
+.sc-overview .ov-title{margin-bottom:12px}
+.sc-ov-stats{display:flex;flex-wrap:wrap;gap:14px 26px}
+.sc-ov-stat{display:flex;flex-direction:column}
+.sc-ov-stat b{font-size:22px;font-weight:800;color:var(--brand-900);line-height:1.15;font-family:ui-monospace,Menlo,Consolas,monospace}
+.sc-ov-stat b.up{color:var(--up)}
+.sc-ov-stat span{font-size:11.5px;color:var(--ink-500);margin-top:3px}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.note-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand-500);border-radius:var(--r-md);padding:11px 14px;box-shadow:var(--sh-sm)}
+.note-card h4{font-size:.88rem;color:var(--brand-900);margin-bottom:5px}
+.note-card p{font-size:.76rem;color:var(--ink-700);line-height:1.55}
+.mat-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.mat-btn{padding:7px 13px;border:1.5px solid #CBD5E1;background:var(--surface);border-radius:var(--r-pill);font-size:13px;font-weight:600;color:var(--ink-700);cursor:pointer;transition:all .15s;font-family:inherit}
+.mat-btn:hover{border-color:var(--brand-500);color:var(--brand-700)}
+.tbl-ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.tbl-ctrl .count{font-size:12.5px;color:var(--ink-500);font-weight:600}
+.tbl-ctrl .hint{font-size:11.5px;color:var(--ink-400);margin-left:auto}
+table.mp{width:100%;border-collapse:collapse;font-size:.84rem}
+table.mp th,table.mp td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line)}
+table.mp thead th{position:sticky;top:53px;background:var(--brand-900);color:#fff;font-weight:600;font-size:.8rem;letter-spacing:.02em;box-shadow:inset 0 -1px 0 rgba(255,255,255,.12);z-index:5}
+table.mp tbody tr:nth-child(even):not(.group-row):not(:hover){background:#F7FAFE}
+table.mp tbody tr:hover{background:var(--brand-100)}
+table.mp td.price{font-weight:700;color:var(--brand-900);font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+table.mp tr.group-row td{background:var(--brand-100);font-weight:600;color:var(--brand-900);font-size:.84rem;padding:8px 10px}
+table.mp tr.group-row .unit{font-weight:500;color:var(--brand-700);background:#fff;border:1px solid var(--brand-200);border-radius:6px;padding:1px 7px;font-size:.72rem;margin-left:8px;white-space:nowrap}
+table.mp tr.group-row .rng{font-weight:500;color:var(--ink-500);font-size:.74rem;margin-left:8px;white-space:nowrap}
+table.mp tr.group-row .gsrc{font-weight:400;color:var(--ink-400);font-size:.7rem;margin-left:10px}
+table.mp td.origin{color:var(--ink-700);font-size:.78rem;white-space:nowrap}
+.risk-badge{font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:999px;margin-left:8px;white-space:nowrap}
+.risk-badge.up{background:var(--dg-100);color:var(--dg-700)}
+.risk-badge.down{background:var(--sf-100);color:var(--sf-700)}
+/* ---- 页脚 ---- */
+.footer{text-align:center;padding:22px 16px 26px;border-top:1px solid var(--line);background:#fff}
+.footer .update-info{font-size:.82rem;color:var(--ink-400)}
+.footer .update-info strong{color:var(--ink-700)}
+.footer .copyright{font-size:.74rem;color:#CBD5E0;margin-top:.4rem}
+/* ---- 价格体检（KPI / 动能 / 位置 / 联动） ---- */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.kpi-tile{border:1px solid var(--line);border-radius:var(--r-md);padding:10px 12px;background:var(--surface);text-align:center}
+.kpi-tile .k-num{font-size:24px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;line-height:1.15}
+.kpi-tile .k-label{font-size:11px;font-weight:700;color:var(--ink-500);margin-top:2px}
+.kpi-tile .k-sub{font-size:10.5px;color:var(--ink-400);margin-top:3px;line-height:1.45;min-height:15px}
+.kpi-tile.up .k-num{color:var(--up)}
+.kpi-tile.down .k-num{color:var(--down)}
+.kpi-tile.warn .k-num{color:var(--wn-600)}
+.mom-tbl .m-name{font-weight:700;color:var(--brand-900);white-space:nowrap}
+.mom-tbl .m-val{font-weight:700;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.mom-tbl .m-val.m-up{color:var(--up)}
+.mom-tbl .m-val.m-dn{color:var(--down)}
+.mom-tbl .m-val.m-flat{color:var(--ink-500)}
+.mom-tbl .m-val.dim{color:var(--ink-400)}
+.pos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.pos-card{border:1px solid var(--line);border-radius:var(--r-md);padding:10px 12px;background:var(--surface)}
+.pos-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.pos-name{font-size:12.5px;font-weight:700;color:var(--brand-900)}
+.pos-pct{font-size:15px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ink-700)}
+.pos-pct.hi{color:var(--up)}
+.pos-pct.lo{color:var(--down)}
+.pos-track{position:relative;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--sf-100) 0%,var(--sf-100) 30%,#E6EDF6 30%,#E6EDF6 70%,var(--dg-100) 70%,var(--dg-100) 100%)}
+.pos-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(15,23,42,.35)}
+.pos-meta{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-400);margin-top:6px}
+.pos-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:10.5px;color:var(--ink-500)}
+.pos-legend .lg{display:inline-flex;align-items:center;gap:5px}
+.pos-legend .lg-lo::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--sf-100)}
+.pos-legend .lg-mid::before{content:"";width:10px;height:10px;border-radius:3px;background:#E6EDF6}
+.pos-legend .lg-hi::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--dg-100)}
+.corr-wrap{overflow-x:auto}
+/* ---- 往期价格档案 ---- */
+.arch-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.arch{width:100%;border-collapse:collapse;font-size:.8rem}
+table.arch th,table.arch td{padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.arch thead th{position:sticky;top:53px;background:var(--brand-900);color:#fff;font-weight:600;font-size:.78rem;box-shadow:inset 0 -1px 0 rgba(255,255,255,.12);z-index:5}
+table.arch thead th:first-child{text-align:left}
+table.arch tbody tr:nth-child(even):not(.group-row):not(:hover){background:#F7FAFE}
+table.arch tbody tr:hover{background:var(--brand-100)}
+table.arch td.a-name{font-weight:600;color:var(--ink-900)}
+table.arch td.a-name small{color:var(--ink-400);font-weight:400;margin-left:4px}
+table.arch td.a-val{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+table.arch tr.group-row td{background:var(--brand-100);font-weight:600;color:var(--brand-900);font-size:.84rem;padding:8px 10px}
+.arch-note{margin-top:8px;font-size:.72rem;color:var(--ink-400);line-height:1.55}
+.focus-badge{display:inline-block;font-size:10px;font-weight:700;color:var(--brand-650);background:var(--brand-100);border:1px solid var(--brand-200);border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;vertical-align:1px}
+.corr-tbl{table-layout:fixed;text-align:center}
+.corr-tbl th{text-align:center;white-space:nowrap}
+.corr-tbl .corr-row-h{text-align:left;white-space:nowrap}
+.corr-tbl .corr-cell{text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:.76rem;padding:6px 4px}
+.corr-tbl .corr-cell.diag{background:var(--ink-100)!important;color:#CBD5E1}
+.corr-tbl .corr-cell.dim{color:var(--ink-400)}
+.corr-tbl .corr-cell.strong{outline:1.5px solid var(--brand-600);outline-offset:-1.5px}
+.act-list{display:flex;flex-direction:column;gap:8px}
+.act-row{border:1px solid var(--line);border-left:4px solid var(--brand-600);border-radius:var(--r-md);padding:9px 13px;font-size:.82rem;color:var(--ink-700);background:var(--surface);line-height:1.6}
+.act-row b{color:var(--brand-900)}
+/* ---- 外部洞察（源地图 / 节奏 / 传导链 / SOP） ---- */
+.rh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.rh-card{border:1px solid var(--line);border-radius:var(--r-md);padding:11px 13px;background:var(--surface)}
+.rh-card.hl{background:var(--brand-100);border-color:var(--brand-200)}
+.rh-tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:var(--r-pill);padding:2px 9px;margin-bottom:6px}
+.rh-tag.t-p0{background:var(--brand-900);color:#fff}
+.rh-tag.t-p1{background:var(--brand-200);color:var(--brand-700)}
+.rh-tag.t-macro{background:var(--wn-100);color:var(--wn-800)}
+.rh-card h3{font-size:13.5px;font-weight:800;color:var(--brand-900);margin-bottom:4px}
+.rh-card p{font-size:11.5px;color:var(--ink-500);line-height:1.55}
+.ext-grp{display:flex;align-items:center;gap:8px;margin:14px 0 6px;font-size:13px;font-weight:800;color:var(--brand-900)}
+.ext-grp:first-of-type{margin-top:0}
+.ext-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.ext-dot.g0{background:var(--brand-900)}.ext-dot.g1{background:var(--brand-500)}.ext-dot.g2{background:#94A3B8}.ext-dot.g3{background:var(--wn-600)}
+.ext-hint{font-size:10.5px;font-weight:500;color:var(--ink-500)}
+.ext-tbl{table-layout:fixed}
+.ext-tbl td{word-break:break-word}
+.ext-src{font-weight:700;white-space:nowrap}
+.ext-src a{color:var(--brand-900);border-bottom:1px dashed #B7CBE8}
+.ext-src a:hover{color:var(--brand-600)}
+.ext-dim{color:var(--ink-400)}
+.ext-ref{font-weight:700;color:var(--brand-700);white-space:nowrap}
+.ext-b{display:inline-block;font-size:10px;font-weight:700;border-radius:var(--r-pill);padding:1px 7px;vertical-align:1px;white-space:nowrap}
+.ext-b.new{background:var(--wn-100);color:var(--wn-800);border:1px solid var(--wn-300)}
+.ext-b.b-free{background:#ECFDF5;color:var(--sf-700);border:1px solid var(--sf-300)}
+.ext-b.b-part{background:#EFF6FF;color:var(--brand-650);border:1px solid #BFDBFE}
+.chain{display:flex;flex-direction:column;gap:9px}
+.ch-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}
+.ch-label{flex:0 0 100px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;border-radius:var(--r-md);padding:6px 8px;text-align:center;line-height:1.4}
+.ch-flow{flex:1;display:flex;align-items:center;gap:5px;flex-wrap:wrap;border:1px dashed #CBD9EE;border-radius:var(--r-md);padding:7px 10px;background:var(--surface)}
+.ch-node{font-size:11px;font-weight:700;color:var(--ink-700);background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:3.5px 10px;white-space:nowrap}
+.ch-node.src{border-color:#BFDBFE;background:var(--brand-100);color:var(--brand-700)}
+.ch-node.dst{border-color:var(--wn-300);background:#FFFBEB;color:var(--wn-800)}
+.ch-arrow{color:var(--ink-400);font-size:11px;font-weight:700}
+.sop-tbl .sop-step{font-weight:800;color:var(--brand-700);font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.sop-tbl .sop-out{color:var(--down);font-weight:700}
+/* ---- 移动端 ---- */
+@media (max-width:900px){
+.page-wrap{display:block}
+.sidebar{position:static;width:100%;height:auto;margin-right:0;border-right:none;border-bottom:1px solid var(--line);box-shadow:none;overflow:visible}
+.sidebar:hover{width:100%;margin-right:0;box-shadow:none}
+.sb-toggle{display:none}
+.sb-nav{display:flex;flex-wrap:wrap;gap:4px;padding:10px 12px}
+.sb-group{margin:0 4px 6px 0;width:100%}
+.sb-group-title{display:block;opacity:1;padding:4px 0 4px}
+.sb-list{display:flex;flex-wrap:wrap;gap:4px}
+.sb-list a,.sb-mat{padding:5px 10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;font-size:12px}
+.sb-label,.sb-count{opacity:1}
+.sb-label{display:inline}
+.main-content{margin-left:0}
+table.mp thead th{position:static}
+.tbl-ctrl .hint{margin-left:0;width:100%}
+.risk-item .ri-note{margin-left:0;text-align:left}
+.rh-grid{grid-template-columns:1fr}
+.kpi-grid{grid-template-columns:repeat(2,1fr)}
+.ext-tbl,.ext-tbl th,.ext-tbl td{white-space:normal}
+.ext-ref,.ext-dim{white-space:normal}
+.ch-label{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<header class="kb-topbar"><div class="kb-topbar-in">
+<a class="kb-home" href="index.html"><span class="kb-home-logo">💱</span> 物料价格趋势库</a>
+<div class="kb-top-right">
+<div class="kb-subnav">
+<a class="kb-subnav-item " href="index.html">📊 价格趋势</a>
+<a class="kb-subnav-item active" href="insight.html">💡 行业分析</a>
+</div>
+<span class="kb-status">📅 2026-09-22</span>
+<a class="kb-back" href="/"><span class="arrow">←</span> 返回门户</a></div>
+</div></header>
+<header class="header">
+<h1>物料原材料价格趋势库 · 行业分析与建议</h1>
+<p class="subtitle">纺织服装原料 / 辅料价格监测 —— 按 棉·麻·丝·毛·化纤·金属·羽绒·皮毛草 分类（可筛选）</p>
+<span class="badge">💱 物料价格趋势库 · 12 大类 · 37 细分品类 · 124 条报价 · 持续刷新</span>
+</header>
+<div class="page-wrap">
+<aside class="sidebar">
+<div class="sb-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg><span>页面导航</span></div>
+<nav class="sb-nav">
+<div class="sb-group"><div class="sb-group-title">分析研判</div><ul class="sb-list"><li><a href="#rptCollection"><span class="sb-ico">📥</span><span class="sb-label">数据采集汇总</span></a></li><li><a href="#rptDiagnosis"><span class="sb-ico">🔬</span><span class="sb-label">趋势诊断</span></a></li><li><a href="#rptDeep"><span class="sb-ico">📊</span><span class="sb-label">价格体检</span></a></li><li><a href="#rptAlert"><span class="sb-ico">🚨</span><span class="sb-label">节点预警</span></a></li><li><a href="#rptInsight"><span class="sb-ico">💡</span><span class="sb-label">综合洞察</span></a></li><li><a href="#rptRiskMap"><span class="sb-ico">🗺️</span><span class="sb-label">风险地图</span></a></li></ul></div>
+<div class="sb-group"><div class="sb-group-title">外部洞察 · 半月刷新</div><ul class="sb-list"><li><a href="#extSection"><span class="sb-ico">🌐</span><span class="sb-label">外部源地图</span></a></li><li><a href="#chainSection"><span class="sb-ico">🔗</span><span class="sb-label">传导链监控</span></a></li><li><a href="#sopSection"><span class="sb-ico">⏱️</span><span class="sb-label">半月刷新SOP</span></a></li></ul></div>
+</nav>
+</aside>
+<main class="main-content">
+<div class="container">
+<details class="rpt-section section-target" id="rptCollection">
+<summary class="rpt-header"><span class="rpt-ico">📥</span><span class="rpt-title">外部数据采集汇总</span><span class="rpt-badge">置信度 84 / 100</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary">本期采集覆盖 12 大类原料/辅料/五金皮革（棉·麻·丝·毛·化纤·羽绒·皮毛草·辅料·纱线·缝纫线·五金·皮革）、131 条报价，数据来源涵盖国家级行业协会、专业交易市场、指数平台及市场调研公开报价。整体采集置信度 84%，棉花/茧丝绸/羊毛等大宗品种来源权威、覆盖度高；五金/皮革/皮毛草与辅料装饰类市场调研报价分散、置信度略低。</div>
+<div class="rpt-score-card"><div class="rpt-score-val high">84</div>
+<div class="rpt-score-bar-wrap"><div class="rpt-score-bar-label">综合采集置信度</div>
+<div class="rpt-score-bar"><div class="rpt-score-bar-fill high" style="width:84%"></div></div></div></div>
+<table class="rpt-table"><thead><tr><th>数据来源</th><th>类型</th><th>覆盖类别</th><th>报价条数</th><th>置信度</th><th>更新频率</th></tr></thead>
+<tbody><tr><td>中国棉花协会 / 国家棉花市场监测</td><td>行业协会</td><td>棉花</td><td>8</td><td class="td-conf high">90</td><td>每日/每周</td></tr><tr><td>中国茧丝绸交易市场（嘉兴）</td><td>专业交易市场</td><td>蚕丝</td><td>4</td><td class="td-conf high">88</td><td>每周</td></tr><tr><td>南京羊毛市场</td><td>专业交易市场</td><td>羊毛/羊绒</td><td>5</td><td class="td-conf high">86</td><td>每周</td></tr><tr><td>羽绒金网 / 中国羽绒信息网</td><td>行业平台</td><td>羽绒</td><td>28</td><td class="td-conf high">82</td><td>半月</td></tr><tr><td>中国化纤信息网 / 中纤网</td><td>行业平台</td><td>化纤</td><td>9</td><td class="td-conf high">84</td><td>每日</td></tr><tr><td>中国麻纺协会 / 麻纺市场</td><td>行业协会</td><td>麻</td><td>3</td><td class="td-conf mid">78</td><td>月度</td></tr><tr><td>服装辅料市场行情</td><td>市场调研</td><td>辅料（拉链/纽扣/衬布/胶条/吊牌/洗水唛）</td><td>9</td><td class="td-conf high">80</td><td>月度</td></tr><tr><td>皮毛草市场行情</td><td>市场调研</td><td>皮毛草（牛皮/胎牛毛皮/毛皮条）</td><td>8</td><td class="td-conf mid">72</td><td>月度</td></tr><tr><td>服装五金市场行情</td><td>市场调研</td><td>五金（锌合金/铜合金/铝合金/铁）</td><td>6</td><td class="td-conf mid">78</td><td>月度</td></tr><tr><td>皮革市场行情</td><td>市场调研</td><td>皮革（真皮牛/羊/猪皮·假皮PU/PVC）</td><td>6</td><td class="td-conf high">80</td><td>月度</td></tr><tr><td>辅料装饰·纸类·塑料行情</td><td>市场调研</td><td>辅料（装饰纽扣/珠宝烫钻/纸类/亚克力·ABS/PET/橡胶硅胶）</td><td>17</td><td class="td-conf high">80</td><td>月度</td></tr><tr><td>棉纺/纱线市场行情</td><td>行业协会/市场调研</td><td>纱线（棉纱/混纺/粘胶纱）</td><td>5</td><td class="td-conf high">82</td><td>每周</td></tr><tr><td>缝制辅料市场行情</td><td>市场调研</td><td>缝纫线（涤纶/尼龙/邦迪线）</td><td>4</td><td class="td-conf high">82</td><td>月度</td></tr></tbody></table>
+</div></details>
+<details class="rpt-section section-target" id="rptDiagnosis">
+<summary class="rpt-header"><span class="rpt-ico">🔬</span><span class="rpt-title">趋势诊断（五维评估）</span><span class="rpt-badge">综合评分 59 / 100</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary">原料端分化明显：化纤受原油成本推动震荡上行、粘纤反弹；羽绒自 6 月高点回落、8 月备货季前有望企稳；棉花弱势震荡、储备棉轮出补充供给；羊毛/羊绒等特种纤维高位平稳。成本传导以原油系（涤纶/锦纶）为主，农产品类（棉麻丝毛）季节性偏弱。</div>
+<div class="rpt-score-card"><div class="rpt-score-val mid">59</div>
+<div class="rpt-score-bar-wrap"><div class="rpt-score-bar-label">五维综合趋势评分（越高=上行压力越大）</div>
+<div class="rpt-score-bar"><div class="rpt-score-bar-fill mid" style="width:59%"></div></div></div></div>
+<div class="rpt-dim-grid"><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">价格趋势</span><span class="rpt-dim-label flat">震荡分化</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">58</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:58%"></div></div></div><div class="rpt-dim-detail">化纤上行、羽绒回落、棉麻丝毛平稳，整体呈结构性分化而非单边</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">供需格局</span><span class="rpt-dim-label down">松紧并存</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">50</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:50%"></div></div></div><div class="rpt-dim-detail">化纤/羽绒供给宽松，羊毛羊绒等特种纤维供应偏紧、宜按单锁量</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">成本传导</span><span class="rpt-dim-label up">上行承压</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">70</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill high" style="width:70%"></div></div></div><div class="rpt-dim-detail">原油反弹推聚酯原料上行，涤纶/锦纶成本端承压但跟涨受限</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">季节性因素</span><span class="rpt-dim-label flat">旺季前置</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">62</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:62%"></div></div></div><div class="rpt-dim-detail">秋冬订单前置带动羽绒/毛绒备货，8 月起需求边际回暖</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">宏观政策</span><span class="rpt-dim-label flat">中性偏松</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">55</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:55%"></div></div></div><div class="rpt-dim-detail">储备棉轮出补充供给、棉价承压；进口配额与内外价差主导波动</div></div></div>
+</div></details>
+<details class="rpt-section section-target" id="rptAlert">
+<summary class="rpt-header"><span class="rpt-ico">🚨</span><span class="rpt-title">节点预警（五因子评估）</span><span class="rpt-badge">⛔ 1 预警 · 🔶 2 跟踪 · ⚠️ 1 关注</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary">本期识别 1 个预警节点、2 个重点跟踪、2 个关注项。原油系原料成本传导为最大风险源，羽绒 8 月备货季前价格拐点需重点跟踪，棉花政策（储备棉轮出）与特种纤维供应为关注项。</div>
+<div class="rpt-dim-grid"><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">原油系原料成本传导</span><span class="rpt-dim-label alert">预警</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">78</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill high" style="width:78%"></div></div></div><div class="rpt-dim-detail">原油反弹+PTA 偏暖→涤纶/锦纶成本上行，下游跟涨乏力、利润承压</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">羽绒8月备货价格拐点</span><span class="rpt-dim-label track">重点跟踪</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">68</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:68%"></div></div></div><div class="rpt-dim-detail">自6月高点回落约 5%，8月秋冬备货临近有望企稳回升，关注原毛价格拐点</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">棉花政策（储备棉轮出）</span><span class="rpt-dim-label track">重点跟踪</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">60</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:60%"></div></div></div><div class="rpt-dim-detail">储备棉轮出补充供给、棉价承压，关注轮出节奏与新棉长势、内外价差</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">特种动物纤维供应偏紧</span><span class="rpt-dim-label watch">关注</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">52</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill mid" style="width:52%"></div></div></div><div class="rpt-dim-detail">羊绒/马海毛/牦牛绒供应节奏偏紧、宜按单锁量，避免旺季断供</div></div><div class="rpt-dim-card"><div class="rpt-dim-head"><span class="rpt-dim-name">进口依赖与汇率</span><span class="rpt-dim-label safe">低风险</span></div><div class="rpt-dim-score-row"><span class="rpt-dim-score">35</span><div class="rpt-dim-bar"><div class="rpt-dim-bar-fill low" style="width:35%"></div></div></div><div class="rpt-dim-detail">澳毛/美棉/进口皮草受汇率与关税影响，整体可控但需跟踪 301 关税落地</div></div></div>
+</div></details>
+<details class="rpt-section section-target" id="rptInsight" open>
+<summary class="rpt-header"><span class="rpt-ico">💡</span><span class="rpt-title">综合洞察（分析与研判）</span><span class="rpt-badge">综合置信度 84 / 100</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-insight-callout"><span class="ic-ico">🎯</span><span class="ic-text">原料端呈结构性分化而非单边行情：原油系（涤纶/锦纶）成本上行但跟涨受限，羽绒自 6 月高点回落约 5%、8 月秋冬备货季前有望企稳，棉麻丝毛季节性偏弱、特种纤维高位平稳。综合采集置信度 84%，结论可用性高，可作为当期采购决策参考。</span></div>
+<div class="rpt-sub-title">关键洞察与行动建议</div>
+<div class="rpt-takeaways"><div class="rpt-take-card lv-act"><div class="rpt-take-head"><span class="rpt-take-tag">成本</span><span class="rpt-take-lv">立即行动</span></div><div class="rpt-take-text">原油反弹推聚酯原料上行，涤纶/锦纶成本端承压但下游跟涨乏力</div><div class="rpt-take-act"><span class="ta-ico">✅</span><span>锁价或采用成本联动条款对冲</span></div></div><div class="rpt-take-card lv-act"><div class="rpt-take-head"><span class="rpt-take-tag">备货</span><span class="rpt-take-lv">立即行动</span></div><div class="rpt-take-text">羽绒 8 月秋冬备货临近，自高点回落约 <b class="tk-num">5%</b> 后有望企稳回升</div><div class="rpt-take-act"><span class="ta-ico">✅</span><span>85/90/95 绒子含量主力规格建议前置锁量、分批采购</span></div></div><div class="rpt-take-card lv-track"><div class="rpt-take-head"><span class="rpt-take-tag">政策</span><span class="rpt-take-lv">跟踪观察</span></div><div class="rpt-take-text">储备棉轮出补充供给、棉价承压</div><div class="rpt-take-act"><span class="ta-ico">🔍</span><span>轮出节奏与新棉长势、内外价差</span></div></div><div class="rpt-take-card lv-act"><div class="rpt-take-head"><span class="rpt-take-tag">供应</span><span class="rpt-take-lv">立即行动</span></div><div class="rpt-take-text">羊毛/羊绒等主力毛纺原料供应偏紧</div><div class="rpt-take-act"><span class="ta-ico">✅</span><span>16/18 支主力纱支宜按单锁量、避免旺季断供；马海毛/牦牛绒等小众品类按需采购</span></div></div><div class="rpt-take-card lv-track"><div class="rpt-take-head"><span class="rpt-take-tag">跟踪</span><span class="rpt-take-lv">跟踪观察</span></div><div class="rpt-take-text">铜价高位震荡（沪铜 7.28 万/吨，近 1 月涨 <b class="tk-num">3.3%</b>），拉链、四合扣等辅料铜用量大</div><div class="rpt-take-act"><span class="ta-ico">🔍</span><span>关注沪铜走势、与核心辅料供应商锁定铜价联动条款</span></div></div></div>
+</div></details>
+<details class="rpt-section section-target" id="rptRiskMap">
+<summary class="rpt-header"><span class="rpt-ico">🗺️</span><span class="rpt-title">风险地图（节点风险全景）</span><span class="rpt-badge">⛔ 1 预警 · 🔶 2 跟踪 · ⚠️ 1 关注</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary">本期 5 个监控节点中，原油系原料成本传导为最高风险（预警，78），羽绒备货拐点与棉花政策为重点跟踪，特种纤维供应与汇率需关注。整体风险可控，建议建立周度复盘机制。</div>
+<div class="risk-stats"><div class="risk-stat alert"><div class="rs-num">1</div><div class="rs-label">预警</div></div><div class="risk-stat track"><div class="rs-num">2</div><div class="rs-label">重点跟踪</div></div><div class="risk-stat watch"><div class="rs-num">1</div><div class="rs-label">关注</div></div><div class="risk-stat safe"><div class="rs-num">1</div><div class="rs-label">低风险</div></div></div>
+<div class="risk-rows"><div class="risk-row top"><span class="rr-level alert">预警</span><span class="rr-name">原油系原料成本传导</span><div class="rr-bar-wrap"><div class="rr-bar"><div class="rr-bar-fill alert" style="width:78%"></div></div></div><span class="rr-score">78</span><span class="rr-action">锁价或成本联动条款，跟踪 PTA 与聚酯原料走势</span></div><div class="risk-row"><span class="rr-level track">重点跟踪</span><span class="rr-name">羽绒8月备货价格拐点</span><div class="rr-bar-wrap"><div class="rr-bar"><div class="rr-bar-fill track" style="width:68%"></div></div></div><span class="rr-score">68</span><span class="rr-action">前置锁量、分批采购，关注原毛价格拐点</span></div><div class="risk-row"><span class="rr-level track">重点跟踪</span><span class="rr-name">棉花政策（储备棉轮出）</span><div class="rr-bar-wrap"><div class="rr-bar"><div class="rr-bar-fill track" style="width:60%"></div></div></div><span class="rr-score">60</span><span class="rr-action">跟踪轮出节奏与新棉长势、内外价差</span></div><div class="risk-row"><span class="rr-level watch">关注</span><span class="rr-name">特种动物纤维供应偏紧</span><div class="rr-bar-wrap"><div class="rr-bar"><div class="rr-bar-fill watch" style="width:52%"></div></div></div><span class="rr-score">52</span><span class="rr-action">按单锁量，避免旺季断供</span></div><div class="risk-row"><span class="rr-level safe">低风险</span><span class="rr-name">进口依赖与汇率</span><div class="rr-bar-wrap"><div class="rr-bar"><div class="rr-bar-fill safe" style="width:35%"></div></div></div><span class="rr-score">35</span><span class="rr-action">跟踪 301 关税与汇率波动，整体可控</span></div></div>
+</div></details>
+<details class="rpt-section section-target" id="rptDeep" open>
+<summary class="rpt-header"><span class="rpt-ico">📊</span><span class="rpt-title">价格体检 · 三期动能 × 年内位置 × 品类联动</span><span class="rpt-badge">覆盖 7 大类 · 近1年口径</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary"><b>体检逻辑：</b>动能看「近1月 / 近1季度 / 近1年」三期方向是否一致（一致 = 趋势确认）；位置看现价处于近1年区间的百分位（≥70% 高位承压、≤30% 低位机会）；联动看品类间收益率相关系数（≥0.6 视为同组敞口）。三者交叉 → 锁价 / 观望 / 建仓动作建议。</div>
+<div class="kpi-grid"><div class="kpi-tile up"><div class="k-num">3</div><div class="k-label">环比上涨</div><div class="k-sub">化纤、麻、丝</div></div><div class="kpi-tile down"><div class="k-num">2</div><div class="k-label">环比下跌</div><div class="k-sub">棉、羽绒</div></div><div class="kpi-tile warn"><div class="k-num">4</div><div class="k-label">三期动能一致</div><div class="k-sub">↑3（化纤、麻、丝）· ↓1（羽绒）</div></div><div class="kpi-tile up"><div class="k-num">4</div><div class="k-label">年内高位 ≥70%</div><div class="k-sub">化纤、棉、丝、毛</div></div><div class="kpi-tile down"><div class="k-num">1</div><div class="k-label">年内低位 ≤30%</div><div class="k-sub">羽绒</div></div></div>
+<div class="rpt-sub-title">① 三期动能（按环比涨幅排序）</div>
+<table class="rpt-table mom-tbl"><thead><tr><th>品类</th><th>近1月</th><th>近1季度</th><th>近1年</th><th>动能判定</th></tr></thead>
+<tbody><tr><td class="m-name">🌿 麻</td><td class="m-val m-up">▲ +0.2%</td><td class="m-val m-up">▲ +2.3%</td><td class="m-val m-up">▲ +3.5%</td><td><span class="ext-b" style="background:#FEE2E2;color:#B91C1C">三期连涨</span></td></tr><tr><td class="m-name">🧪 化纤</td><td class="m-val m-up">▲ +0.2%</td><td class="m-val m-up">▲ +3.1%</td><td class="m-val m-up">▲ +5.3%</td><td><span class="ext-b" style="background:#FEE2E2;color:#B91C1C">三期连涨</span></td></tr><tr><td class="m-name">🧵 丝</td><td class="m-val m-up">▲ +0.2%</td><td class="m-val m-up">▲ +1.1%</td><td class="m-val m-up">▲ +2.5%</td><td><span class="ext-b" style="background:#FEE2E2;color:#B91C1C">三期连涨</span></td></tr><tr><td class="m-name">🐑 毛</td><td class="m-val m-flat">— +0.0%</td><td class="m-val m-up">▲ +1.0%</td><td class="m-val m-up">▲ +1.5%</td><td><span class="ext-b" style="background:#F1F5F9;color:#64748B">走势分歧</span></td></tr><tr><td class="m-name">🐄 皮毛草</td><td class="m-val m-flat">— +0.0%</td><td class="m-val m-up">▲ +2.1%</td><td class="m-val m-up">▲ +2.0%</td><td><span class="ext-b" style="background:#F1F5F9;color:#64748B">走势分歧</span></td></tr><tr><td class="m-name">🌱 棉</td><td class="m-val m-dn">▼ -0.5%</td><td class="m-val m-up">▲ +0.7%</td><td class="m-val m-up">▲ +1.5%</td><td><span class="ext-b" style="background:#F1F5F9;color:#64748B">走势分歧</span></td></tr><tr><td class="m-name">🪶 羽绒</td><td class="m-val m-dn">▼ -5.0%</td><td class="m-val m-dn">▼ -5.8%</td><td class="m-val m-dn">▼ -7.0%</td><td><span class="ext-b" style="background:#D1FAE5;color:#047857">三期连跌</span></td></tr></tbody></table>
+<div class="rpt-sub-title">② 年内位置（现价处于近1年区间百分位）</div>
+<div class="pos-grid"><div class="pos-card"><div class="pos-head"><span class="pos-name">🧪 化纤</span><span class="pos-pct hi">98%</span></div><div class="pos-track"><span class="pos-dot" style="left:98%;background:#DC2626"></span></div><div class="pos-meta"><span>低 96.06</span><span>σ波动 2.4%</span><span>高 101.65</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🐑 毛</span><span class="pos-pct hi">90%</span></div><div class="pos-track"><span class="pos-dot" style="left:90%;background:#DC2626"></span></div><div class="pos-meta"><span>低 81.8</span><span>σ波动 1.4%</span><span>高 85.36</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🌱 棉</span><span class="pos-pct hi">74%</span></div><div class="pos-track"><span class="pos-dot" style="left:74%;background:#DC2626"></span></div><div class="pos-meta"><span>低 17,103</span><span>σ波动 2.0%</span><span>高 17,832</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🧵 丝</span><span class="pos-pct hi">72%</span></div><div class="pos-track"><span class="pos-dot" style="left:72%;background:#DC2626"></span></div><div class="pos-meta"><span>低 428,235</span><span>σ波动 2.2%</span><span>高 451,508</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🌿 麻</span><span class="pos-pct">68%</span></div><div class="pos-track"><span class="pos-dot" style="left:68%;background:#2563EB"></span></div><div class="pos-meta"><span>低 21,229</span><span>σ波动 2.1%</span><span>高 22,364</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🐄 皮毛草</span><span class="pos-pct">66%</span></div><div class="pos-track"><span class="pos-dot" style="left:66%;background:#2563EB"></span></div><div class="pos-meta"><span>低 23.2</span><span>σ波动 2.3%</span><span>高 24.42</span></div></div><div class="pos-card"><div class="pos-head"><span class="pos-name">🪶 羽绒</span><span class="pos-pct lo">0%</span></div><div class="pos-track"><span class="pos-dot" style="left:0%;background:#059669"></span></div><div class="pos-meta"><span>低 565</span><span>σ波动 1.7%</span><span>高 607.53</span></div></div></div>
+<div class="pos-legend"><span class="lg lg-lo">≤30% 低位</span><span class="lg lg-mid">30–70% 中位</span><span class="lg lg-hi">≥70% 高位</span><span class="lg">σ = 近1年收益率标准差（波动）</span></div>
+<div class="rpt-sub-title">③ 品类联动矩阵（近1年收益率 Pearson 相关系数）</div>
+<div class="corr-wrap"><table class="rpt-table corr-tbl"><thead><tr><th></th><th>化纤</th><th>棉</th><th>麻</th><th>丝</th><th>毛</th><th>羽绒</th><th>皮毛草</th></tr></thead>
+<tbody><tr><th class="corr-row-h">🧪 化纤</th><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(220,38,38,0.03)">+0.05</td><td class="corr-cell" style="background:rgba(220,38,38,0.10)">+0.20</td><td class="corr-cell" style="background:rgba(5,150,105,0.11)">-0.23</td><td class="corr-cell" style="background:rgba(5,150,105,0.21)">-0.42</td><td class="corr-cell" style="background:rgba(220,38,38,0.12)">+0.25</td><td class="corr-cell" style="background:rgba(5,150,105,0.02)">-0.04</td></tr><tr><th class="corr-row-h">🌱 棉</th><td class="corr-cell" style="background:rgba(220,38,38,0.03)">+0.05</td><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(220,38,38,0.01)">+0.01</td><td class="corr-cell strong" style="background:rgba(220,38,38,0.32)">+0.63</td><td class="corr-cell" style="background:rgba(5,150,105,0.28)">-0.56</td><td class="corr-cell" style="background:rgba(5,150,105,0.21)">-0.42</td><td class="corr-cell" style="background:rgba(5,150,105,0.03)">-0.05</td></tr><tr><th class="corr-row-h">🌿 麻</th><td class="corr-cell" style="background:rgba(220,38,38,0.10)">+0.20</td><td class="corr-cell" style="background:rgba(220,38,38,0.01)">+0.01</td><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(220,38,38,0.04)">+0.08</td><td class="corr-cell" style="background:rgba(220,38,38,0.05)">+0.11</td><td class="corr-cell strong" style="background:rgba(220,38,38,0.32)">+0.64</td><td class="corr-cell" style="background:rgba(5,150,105,0.18)">-0.37</td></tr><tr><th class="corr-row-h">🧵 丝</th><td class="corr-cell" style="background:rgba(5,150,105,0.11)">-0.23</td><td class="corr-cell strong" style="background:rgba(220,38,38,0.32)">+0.63</td><td class="corr-cell" style="background:rgba(220,38,38,0.04)">+0.08</td><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(5,150,105,0.03)">-0.05</td><td class="corr-cell" style="background:rgba(5,150,105,0.06)">-0.13</td><td class="corr-cell" style="background:rgba(220,38,38,0.12)">+0.24</td></tr><tr><th class="corr-row-h">🐑 毛</th><td class="corr-cell" style="background:rgba(5,150,105,0.21)">-0.42</td><td class="corr-cell" style="background:rgba(5,150,105,0.28)">-0.56</td><td class="corr-cell" style="background:rgba(220,38,38,0.05)">+0.11</td><td class="corr-cell" style="background:rgba(5,150,105,0.03)">-0.05</td><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(220,38,38,0.23)">+0.46</td><td class="corr-cell" style="background:rgba(5,150,105,0.20)">-0.40</td></tr><tr><th class="corr-row-h">🪶 羽绒</th><td class="corr-cell" style="background:rgba(220,38,38,0.12)">+0.25</td><td class="corr-cell" style="background:rgba(5,150,105,0.21)">-0.42</td><td class="corr-cell strong" style="background:rgba(220,38,38,0.32)">+0.64</td><td class="corr-cell" style="background:rgba(5,150,105,0.06)">-0.13</td><td class="corr-cell" style="background:rgba(220,38,38,0.23)">+0.46</td><td class="corr-cell diag">—</td><td class="corr-cell" style="background:rgba(5,150,105,0.16)">-0.32</td></tr><tr><th class="corr-row-h">🐄 皮毛草</th><td class="corr-cell" style="background:rgba(5,150,105,0.02)">-0.04</td><td class="corr-cell" style="background:rgba(5,150,105,0.03)">-0.05</td><td class="corr-cell" style="background:rgba(5,150,105,0.18)">-0.37</td><td class="corr-cell" style="background:rgba(220,38,38,0.12)">+0.24</td><td class="corr-cell" style="background:rgba(5,150,105,0.20)">-0.40</td><td class="corr-cell" style="background:rgba(5,150,105,0.16)">-0.32</td><td class="corr-cell diag">—</td></tr></tbody></table></div>
+<div class="rpt-sub-title">④ 交叉结论 → 采购动作</div>
+<div class="act-list"><div class="act-row">📌 <b>化纤</b>：年内 98% 高位 + 三期动能一致上行 → 相关物料<b>提前锁价</b>，避免追高</div><div class="act-row">📌 <b>麻</b>：三期动能一致上行（年内 68%）→ 关注成本传导，锁定长单价格</div><div class="act-row">📌 <b>丝</b>：年内 72% 高位 + 三期动能一致上行 → 相关物料<b>提前锁价</b>，避免追高</div><div class="act-row">📌 <b>羽绒</b>：年内 0% 低位 → <b>逢低分批建仓</b>窗口，评估冬装填充料备货节奏</div><div class="act-row">📌 <b>棉 × 丝</b>：联动系数 +0.63（同涨同跌）→ 组合谈判、替代评估时视为一组敞口</div><div class="act-row">📌 <b>麻 × 羽绒</b>：联动系数 +0.64（同涨同跌）→ 组合谈判、替代评估时视为一组敞口</div></div>
+</div></details>
+<details class="rpt-section section-target" id="extSection">
+<summary class="rpt-header"><span class="rpt-ico">🌐</span><span class="rpt-title">外部价格源地图 · 向外洞察</span><span class="rpt-badge">27 个数据源 · 链接 2026-09-25 核实</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="rpt-summary"><b>半月刷新节奏：</b>每月 10 日 / 25 日 09:00 上半月刷（上月 PPI 刚发布，第一时间解读成本传导）+ 下半月刷（可与行业追踪合并月度综述）。数据源从 16 个拓展至 <b>27 个</b>，新增国际锚点（Cotlook A / AWEX / ICE）、期货联动（新浪/东财）、五金基价（长江有色 / SMM / 永康指数）与宏观传导指标（原油 / 汇率 / PPI）。</div>
+<div class="rh-grid"><div class="rh-card hl"><div class="rh-tag t-p0">P0 · 每次必刷</div><h3>8 个核心指数源</h3><p>化纤 · 生丝 · 棉花(内外双锚) · 羽绒 · 羊毛 · 五金基价 —— 覆盖库内高权重四大组，10 分钟完成取数</p></div><div class="rh-card"><div class="rh-tag t-p1">P1 · 半月轮刷</div><h3>10 个行情补充源</h3><p>按当期异动品类轮换刷取：聚酯链开工/库存、国际澳毛拍卖、期货联动、纱线指数 —— 与 P0 交叉验证</p></div><div class="rh-card"><div class="rh-tag t-macro">宏观 · 每次必看</div><h3>3 个传导指标</h3><p>原油（化纤成本端）· USD/CNY 汇率（进口羊毛/皮革）· PPI（全链传导确认）—— 10 日刷新恰逢上月 PPI 发布</p></div></div>
+<div class="ext-grp"><span class="ext-dot g0"></span>P0 · 每次必刷<span class="ext-hint">异动监测核心，覆盖库内引用最多的四大高权重组</span></div><table class="rpt-table ext-tbl"><thead><tr><th style="width:170px">数据源</th><th style="width:150px">覆盖品类</th><th>关键指标</th><th style="width:80px">频率</th><th style="width:80px">免费程度</th><th style="width:90px">库内引用</th></tr></thead><tbody><tr><td class="ext-src"><a href="https://www.100ppi.com" target="_blank">生意社</a></td><td>化纤/涤纶/PTA/生丝/粘胶/氨纶</td><td>涤纶 POY/FDY/DTY 基准价</td><td class="ext-dim">每日</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">★ 12 次</td></tr><tr><td class="ext-src"><a href="https://www.esilk.net" target="_blank">中国茧丝绸网</a><span class="ext-b new">新</span></td><td>生丝/蚕丝</td><td>CCSE 高品质生丝指数（每周五 16:30）</td><td class="ext-dim">每周五</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">丝类主源</td></tr><tr><td class="ext-src"><a href="http://www.kqindex.cn" target="_blank">柯桥纺织指数</a></td><td>全产业链（商务部授权）</td><td>总类/原料类/坯布类价格指数</td><td class="ext-dim">每周一</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">★ 11 次</td></tr><tr><td class="ext-src"><a href="https://www.cn-down.com" target="_blank">羽绒金网</a></td><td>羽绒</td><td>GB/T 14272 口径 90% 绒价</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">★ 6 次</td></tr><tr><td class="ext-src"><a href="https://www.woolmarket.com.cn" target="_blank">南京羊毛市场</a></td><td>羊毛/羊绒/毛纺原料</td><td>澳毛 EMI 指数、毛纺周报价</td><td class="ext-dim">日报+周报</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">★ 5 次</td></tr><tr><td class="ext-src"><a href="https://www.china-cotton.org" target="_blank">中国棉花协会</a></td><td>棉花</td><td>CCIndex 3128B、FC Index M</td><td class="ext-dim">每日/周/月</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">★ 7 次</td></tr><tr><td class="ext-src"><a href="https://www.cotlook.com" target="_blank">Cotlook A 指数</a><span class="ext-b new">新</span></td><td>国际棉花现货</td><td>A Index（与 CCIndex 内外双锚）</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">国际锚</td></tr><tr><td class="ext-src"><a href="https://www.ccmn.cn" target="_blank">长江有色金属网</a><span class="ext-b new">新</span></td><td>五金金属基价</td><td>铜/铝/锌现货价（首页直看）</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">五金 6 条</td></tr></tbody></table><div class="ext-grp"><span class="ext-dot g1"></span>P1 · 半月轮刷<span class="ext-hint">按当期异动品类轮换刷取，与 P0 交叉验证</span></div><table class="rpt-table ext-tbl"><thead><tr><th style="width:170px">数据源</th><th style="width:150px">覆盖品类</th><th>关键指标</th><th style="width:80px">频率</th><th style="width:80px">免费程度</th><th style="width:90px">库内引用</th></tr></thead><tbody><tr><td class="ext-src"><a href="https://www.ccf.com.cn" target="_blank">CCF 化纤信息网</a></td><td>聚酯链 PX→PTA→长丝</td><td>长丝均价、开工率、库存、利润</td><td class="ext-dim">每日</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">化纤补充</td></tr><tr><td class="ext-src"><a href="https://www.ccfgroup.com" target="_blank">CCF 英文站</a><span class="ext-b new">新</span></td><td>聚酯/锦纶/氨纶/粘胶</td><td>各产品月度日历价格表</td><td class="ext-dim">月度</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">出口参考</td></tr><tr><td class="ext-src"><a href="https://www.ccfei.com" target="_blank">中纤网</a></td><td>化纤</td><td>涤纶/锦纶/粘胶/氨纶报价</td><td class="ext-dim">每日</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">化纤补充</td></tr><tr><td class="ext-src"><a href="http://index.168tex.com" target="_blank">盛泽丝绸化纤指数</a></td><td>化纤面料/丝绸</td><td>每日涨跌榜、盛泽 50 指数</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">2 次</td></tr><tr><td class="ext-src"><a href="https://cfd.com.cn" target="_blank">中国羽绒信息网</a></td><td>羽绒</td><td>多国标成品绒均价、下周预测</td><td class="ext-dim">每周</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">5 次</td></tr><tr><td class="ext-src"><a href="https://awex.com.au" target="_blank">AWEX 澳洲羊毛交易所</a><span class="ext-b new">新</span></td><td>澳毛拍卖（国际锚）</td><td>EMI 东部市场指数、周度拍卖报告</td><td class="ext-dim">每周</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">羊毛国际锚</td></tr><tr><td class="ext-src"><a href="https://www.smm.cn" target="_blank">上海有色网 SMM</a><span class="ext-b new">新</span></td><td>铜/铝/锌</td><td>SMM 1# 电解铜、A00 铝</td><td class="ext-dim">工作日</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">五金交叉</td></tr><tr><td class="ext-src"><a href="https://www.chinayarn.com" target="_blank">中国纱线网</a><span class="ext-b new">新</span></td><td>棉纱/混纺纱</td><td>棉纱价格指数、采购行情</td><td class="ext-dim">不定期</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">纱线 5 条</td></tr><tr><td class="ext-src"><a href="https://finance.sina.com.cn" target="_blank">新浪财经·期货</a><span class="ext-b new">新</span></td><td>郑棉/PTA/短纤/原油期货</td><td>主力合约实时行情（期现联动预警）</td><td class="ext-dim">实时</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">期现联动</td></tr><tr><td class="ext-src"><a href="https://data.eastmoney.com" target="_blank">东方财富·期货</a><span class="ext-b new">新</span></td><td>全品种期货</td><td>实时行情、持仓结构（资金动向）</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">持仓验证</td></tr></tbody></table><div class="ext-grp"><span class="ext-dot g2"></span>P2 · 月度低频<span class="ext-hint">月报与深度分析用，非半月必刷项</span></div><table class="rpt-table ext-tbl"><thead><tr><th style="width:170px">数据源</th><th style="width:150px">覆盖品类</th><th>关键指标</th><th style="width:80px">频率</th><th style="width:80px">免费程度</th><th style="width:90px">库内引用</th></tr></thead><tbody><tr><td class="ext-src"><a href="https://www.mysteel.com" target="_blank">Mysteel 大宗板块</a></td><td>织造开工率/坯布库存</td><td>织造样本企业综合开工率</td><td class="ext-dim">每周</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">需求侧验证</td></tr><tr><td class="ext-src"><a href="http://www.eccse.net" target="_blank">嘉兴茧丝绸市场</a></td><td>蚕丝/生丝/绸缎</td><td>嘉兴指数、3A 20/22D 生丝</td><td class="ext-dim">每周</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">4 次</td></tr><tr><td class="ext-src"><a href="http://www.czce.com.cn" target="_blank">郑州商品交易所</a></td><td>郑棉期货</td><td>郑棉主力合约</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">期现联动</td></tr><tr><td class="ext-src"><a href="https://www.tnc.com.cn" target="_blank">全球纺织网</a></td><td>化纤/面料行情汇总</td><td>涤纶/锦纶长丝月内涨幅汇总</td><td class="ext-dim">每日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">行情交叉</td></tr><tr><td class="ext-src"><a href="http://www.cblfta.org.cn" target="_blank">中国麻纺织行业协会</a></td><td>苎麻/亚麻/黄麻</td><td>麻原料进口量价（海关口径）</td><td class="ext-dim">月度/季度</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">麻类月报</td></tr><tr><td class="ext-src"><a href="https://www.ccfa.com.cn" target="_blank">中国化学纤维工业协会</a></td><td>化纤全行业</td><td>锦纶/涤纶利润、产量运行分析</td><td class="ext-dim">月度/年度</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">行业景气</td></tr><tr><td class="ext-src"><a href="https://www.ykindex.com" target="_blank">永康五金指数</a><span class="ext-b new">新</span></td><td>五金市场</td><td>五金交易周价格总指数（零注册）</td><td class="ext-dim">每周</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">五金宏观</td></tr><tr><td class="ext-src"><a href="https://www.iwto.org" target="_blank">IWTO 国际羊毛纺织组织</a><span class="ext-b new">新</span></td><td>羊毛全球统计</td><td>Statistics、Market Information</td><td class="ext-dim">半年</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">羊毛背景</td></tr><tr><td class="ext-src"><a href="https://www.ice.com" target="_blank">ICE 棉花期货</a><span class="ext-b new">新</span></td><td>国际棉花期货</td><td>Cotton No.2（CT）合约</td><td class="ext-dim">每日</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">国际预期</td></tr></tbody></table><div class="ext-grp"><span class="ext-dot g3"></span>低置信源比价池<span class="ext-hint">辅料/皮毛草/五金/缝纫线等「市场调研」报价的校准渠道</span></div><table class="rpt-table ext-tbl"><thead><tr><th style="width:170px">渠道</th><th style="width:150px">覆盖品类</th><th>取数方式</th><th style="width:80px">免费程度</th><th style="width:90px">库内条数</th></tr></thead><tbody><tr><td class="ext-src"><a href="https://s.1688.com" target="_blank">1688 批发行情</a></td><td>拉链/纽扣/衬布/缝纫线/五金件</td><td>按关键词搜索批发价区间，取中位数比价</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">辅料 26 条</td></tr><tr><td class="ext-src"><a href="https://www.haining.com" target="_blank">海宁皮革城</a></td><td>皮革/皮草产业</td><td>仅产业新闻入口，靠市场询价+生意社皮革频道交叉</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">皮毛草 8 条</td></tr><tr><td class="ext-src"><a href="https://www.100ppi.com" target="_blank">生意社皮革频道</a></td><td>牛皮/PU/PVC</td><td>皮革原料报价页，与海宁询价交叉</td><td><span class="ext-b b-part">部分免费</span></td><td class="ext-ref">皮革 6 条</td></tr></tbody></table><div class="ext-grp"><span class="ext-dot g3"></span>宏观传导监控<span class="ext-hint">每次刷新必看，判断成本传导方向与力度</span></div><table class="rpt-table ext-tbl"><thead><tr><th style="width:170px">数据源</th><th style="width:150px">覆盖品类</th><th>关键指标</th><th style="width:80px">频率</th><th style="width:80px">免费程度</th><th style="width:90px">库内引用</th></tr></thead><tbody><tr><td class="ext-src"><a href="https://finance.sina.com.cn/money/future/" target="_blank">WTI / 布伦特原油</a></td><td>原油期货</td><td>油价 ±5% 触发聚酯链预警（传导 2-4 周）</td><td class="ext-dim">实时</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">化纤 33 条</td></tr><tr><td class="ext-src"><a href="https://www.chinamoney.com.cn/chinese/sddshl/" target="_blank">USD/CNY 汇率</a></td><td>外汇交易中心</td><td>即期+中间价，贬值推高进口澳毛/原皮/五金成本</td><td class="ext-dim">工作日</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">羊毛/皮革/五金</td></tr><tr><td class="ext-src"><a href="https://www.stats.gov.cn/sj/zxfb/" target="_blank">PPI 工业生产者价格</a></td><td>国家统计局</td><td>每月 9 日左右发布上月值，10 日刷新第一时间解读</td><td class="ext-dim">月度</td><td><span class="ext-b b-free">完全免费</span></td><td class="ext-ref">全链成本确认</td></tr></tbody></table>
+</div></details>
+<details class="rpt-section section-target" id="chainSection">
+<summary class="rpt-header"><span class="rpt-ico">🔗</span><span class="rpt-title">成本传导链监控</span><span class="rpt-badge">上游异动 → 库内品类预警映射</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<div class="chain"><div class="ch-row"><div class="ch-label" style="background:#0B2E59">化纤链 · 33 条</div><div class="ch-flow"><span class="ch-node src">原油 WTI/布伦特</span><span class="ch-arrow">→</span><span class="ch-node">PX</span><span class="ch-arrow">→</span><span class="ch-node">PTA / MEG</span><span class="ch-arrow">→</span><span class="ch-node">涤纶长丝 POY/FDY/DTY</span><span class="ch-arrow">→</span><span class="ch-node dst">缝纫线·里布·涤纶面料</span></div></div><div class="ch-row"><div class="ch-label" style="background:#14489E">羊毛链 · 5 条</div><div class="ch-flow"><span class="ch-node src">澳毛拍卖 EMI（AWEX）</span><span class="ch-arrow">→</span><span class="ch-node">南京羊毛市场周报</span><span class="ch-arrow">→</span><span class="ch-node dst">羊毛纱线·呢料</span><span class="ch-arrow">→</span><span class="ch-node src">USD/CNY 汇率</span></div></div><div class="ch-row"><div class="ch-label" style="background:#2563EB">棉纱链 · 8 条</div><div class="ch-flow"><span class="ch-node src">Cotlook A + CCIndex</span><span class="ch-arrow">→</span><span class="ch-node">郑棉期货预期</span><span class="ch-arrow">→</span><span class="ch-node">棉纱价格指数</span><span class="ch-arrow">→</span><span class="ch-node dst">棉布·棉辅料</span></div></div><div class="ch-row"><div class="ch-label" style="background:#D97706">五金链 · 6 条</div><div class="ch-flow"><span class="ch-node src">LME / 长江有色 / SMM 铜铝锌</span><span class="ch-arrow">→</span><span class="ch-node">锌合金/铜合金/铝合金基价</span><span class="ch-arrow">→</span><span class="ch-node">+加工费（1688 比价）</span><span class="ch-arrow">→</span><span class="ch-node dst">拉链头·扣件·装饰件</span></div></div><div class="ch-row"><div class="ch-label" style="background:#059669">羽绒链 · 6 条</div><div class="ch-flow"><span class="ch-node src">羽绒金网 + 中国羽绒信息网</span><span class="ch-arrow">→</span><span class="ch-node">90% 绒价（多国标交叉）</span><span class="ch-arrow">→</span><span class="ch-node dst">白鸭绒·白鹅绒填充</span></div></div></div>
+<div class="rpt-summary" style="margin:12px 0 0"><b>预警规则：</b>上游节点（原油 / EMI / Cotlook A / 铜铝锌）单期波动 ≥5% → 对应下游库内品类列入<b>重点跟踪</b>；两项及以上上游同向异动 → 升级<b>预警</b>级，触发采购策略建议（提前锁价 / 推迟下单 / 替代料评估）。</div>
+</div></details>
+<details class="rpt-section section-target" id="sopSection">
+<summary class="rpt-header"><span class="rpt-ico">⏱️</span><span class="rpt-title">半月刷新 SOP</span><span class="rpt-badge">每月 10 日 / 25 日 09:00 · D 日中午前交付</span><span class="rpt-chev">▾</span></summary>
+<div class="rpt-body">
+<table class="rpt-table sop-tbl"><thead><tr><th style="width:46px">步骤</th><th style="width:120px">动作</th><th>操作要点</th><th style="width:170px">输出成果</th><th style="width:110px">时限</th></tr></thead>
+<tbody><tr><td class="sop-step">1</td><td><b>取数</b></td><td>P0 八源全刷 + P1 按当期异动品类轮刷 + 宏观三项（油价/汇率/PPI）</td><td class="sop-out">外部原始报价快照</td><td class="ext-dim">09:00–10:00</td></tr><tr><td class="sop-step">2</td><td><b>比价</b></td><td>与库内 131 条报价逐一对比，计算价差 % 与方向</td><td class="sop-out">内外价差清单</td><td class="ext-dim">10:00–10:30</td></tr><tr><td class="sop-step">3</td><td><b>异动识别</b></td><td>±5% 异动分级（预警/重点跟踪/关注），结合传导链判断持续性</td><td class="sop-out">异动预警清单</td><td class="ext-dim">10:30–11:00</td></tr><tr><td class="sop-step">4</td><td><b>数据更新</b></td><td>更新 material_prices JSON（保留结构）→ 重跑 build_price_html.py</td><td class="sop-out">刷新版趋势库页面</td><td class="ext-dim">11:00–11:30</td></tr><tr><td class="sop-step">5</td><td><b>洞察产出</b></td><td>半月外部洞察简报：核心结论 / 内外价差 / 传导链异动 / 采购行动建议</td><td class="sop-out">洞察简报 HTML</td><td class="ext-dim">11:30–12:00</td></tr><tr><td class="sop-step">6</td><td><b>发布分享</b></td><td>部署 GitHub Pages → 企微分享（零 JS 页面直接转发）</td><td class="sop-out">在线地址 + 企微推送</td><td class="ext-dim">当日中午前</td></tr></tbody></table>
+<div class="rpt-summary" style="margin:12px 0 0"><b>更新纪律：</b>刷新连分组明细一起改，勿只改 meta；低置信源（辅料/皮毛草/五金）每次以 1688 比价校准，连续 3 期验证后升级置信度标注；引用数据一律链接原文来源（可溯源）。</div>
+</div></details>
+</div>
+<footer class="footer">
+<div class="update-info">数据日期：<strong>2026-09-22</strong> ｜ 来源：<strong>中国·盛泽丝绸化纤指数 · 羽绒金网 · 中国棉花协会 · 中国茧丝绸交易市场 · 南京羊毛市场 · 中国麻纺 · 服装辅料市场行情</strong></div>
+<div class="copyright">物料价格趋势库 · 供应链中心 · 纯静态零 JS 版（兼容企业微信浏览器，报价仅供参考，以实际成交为准）</div>
+</footer>
+</main>
+</div>
+</body>
+</html>
