@@ -1,0 +1,12 @@
+# 告诉Git忽略这些文件
+*.pyc
+__pycache__/
+*.tmp
+_mail_body.html
+_update_data2.py
+_fix_wool.py
+_v*.py
+_test_build.py
+_probe*.py
+.DS_Store
+Thumbs.db
