@@ -10,3 +10,5 @@ _test_build.py
 _probe*.py
 .DS_Store
 Thumbs.db
+.trae-html-share-packages/
+.agents/

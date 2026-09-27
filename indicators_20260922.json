@@ -1,0 +1,7436 @@
+{
+ "schema_version": "1.0",
+ "meta": {
+  "title": "物料原材料价格趋势库",
+  "subtitle": "纺织服装原料 / 辅料价格监测 —— 按 棉·麻·丝·毛·化纤·金属·羽绒·皮毛草 分类（可筛选）",
+  "updated": "2026-09-22",
+  "market": {
+   "date": "2026-09-22",
+   "index": 107.11,
+   "index_change": 0.34,
+   "inventory_days": 32.8,
+   "operating_rate": 48.02,
+   "sampled_shops": 350,
+   "index_note": "中国·柯桥纺织指数 20260921 期纺织品价格指数 107.11 点（环比 +0.34%、同比 +1.71%、较年初 +1.62%）；原料类 94.28 点（环比 +0.33%）、坯布类 116.44 点（环比 +1.14%）、面料类 110.88 点（环比 +0.28%）。萧绍地区涤纶长丝全线上涨：POY 9755、FDY 9945、DTY 10625 元/吨（环比 +325~355）；涤纶短纤 8802 元/吨；锦纶 70D 系列 POY/DTY/FDY 15700/17700/15800 元/吨；氨纶 40D 29000 元/吨持稳。棉价承压：CCIndex 3128B 9/21 报 17381 元/吨（月 -4.4%），郑棉主力 15750 元/吨创逾 5 个月新低；普梳 32S 棉纱 24000 元/吨。羽绒 9/20：90% 白鸭绒 565、90% 白鹅绒 985 元/公斤（高位小幅回落）。生丝 435600 元/吨（生意社 9/21）。",
+   "inventory_note": "坯布织造库存维持 30 天以上高位（延续前期监测水平），金九需求兑现不足、去库缓慢；柯桥坯布价格指数 115.13 点环比 -0.97%，其中天然纤维坯布 -4.04%、混纺坯布 -2.44%；涤纶长丝涨价向坯布端传导不畅，织造利润被原料端持续挤压，企业维持低负荷、缓慢消化库存。",
+   "operating_note": "金九旺季启动偏缓：Mysteel 织造样本企业综合开工率 48.02%（9/11-17 周，环比 -0.26pct），喷水织机 5-6 成、圆机不足 4 成；涤纶长丝持续涨价但下游高价抵触、整体产销率仅约 4 成，多数工厂低负荷运行避险，部分外贸订单外流；加弹开工率约 73%、印染综合约 66%，秋冬订单已进入生产环节。"
+  }
+ },
+ "data_sources": [
+  {
+   "code": "COTTON_ASSN",
+   "name": "中国棉花协会",
+   "type": "行业协会",
+   "grade": "A",
+   "base_url": "",
+   "coverage": "棉花",
+   "update_freq": "每日/每周",
+   "confidence": 90
+  },
+  {
+   "code": "SILK_EXCH",
+   "name": "中国茧丝绸交易市场",
+   "type": "专业交易市场",
+   "grade": "A",
+   "base_url": "",
+   "coverage": "蚕丝",
+   "update_freq": "每周",
+   "confidence": 88
+  },
+  {
+   "code": "WOOL_NJ",
+   "name": "南京羊毛市场",
+   "type": "专业交易市场",
+   "grade": "A",
+   "base_url": "",
+   "coverage": "羊毛/羊绒",
+   "update_freq": "每周",
+   "confidence": 86
+  },
+  {
+   "code": "DOWN_GOLD",
+   "name": "羽绒金网",
+   "type": "行业平台",
+   "grade": "B",
+   "base_url": "",
+   "coverage": "羽绒",
+   "update_freq": "半月",
+   "confidence": 82
+  },
+  {
+   "code": "CCF",
+   "name": "中国化纤信息网",
+   "type": "行业平台",
+   "grade": "B",
+   "base_url": "",
+   "coverage": "化纤",
+   "update_freq": "每日",
+   "confidence": 84
+  },
+  {
+   "code": "CHINA_FLAX",
+   "name": "中国麻纺",
+   "type": "行业协会",
+   "grade": "B",
+   "base_url": "",
+   "coverage": "麻",
+   "update_freq": "月度",
+   "confidence": 78
+  },
+  {
+   "code": "TRIM_MKT",
+   "name": "服装辅料市场行情",
+   "type": "市场调研",
+   "grade": "C",
+   "base_url": "",
+   "coverage": "辅料（拉链/纽扣/衬布/胶条/吊牌/洗水唛）",
+   "update_freq": "月度",
+   "confidence": 80
+  },
+  {
+   "code": "HW_MKT",
+   "name": "五金市场行情",
+   "type": "市场调研",
+   "grade": "C",
+   "base_url": "",
+   "coverage": "五金（锌合金/铜合金/铝合金/铁）",
+   "update_freq": "月度",
+   "confidence": 78
+  },
+  {
+   "code": "LEATHER_MKT",
+   "name": "皮革市场行情",
+   "type": "市场调研",
+   "grade": "C",
+   "base_url": "",
+   "coverage": "皮革（真皮牛/羊/猪皮·假皮PU/PVC）",
+   "update_freq": "月度",
+   "confidence": 80
+  },
+  {
+   "code": "YARN_MKT",
+   "name": "棉纺/纱线市场行情",
+   "type": "行业协会/市场调研",
+   "grade": "C",
+   "base_url": "",
+   "coverage": "纱线（棉纱/混纺/粘胶纱）",
+   "update_freq": "每周",
+   "confidence": 82
+  },
+  {
+   "code": "SEW_MKT",
+   "name": "缝制辅料市场行情",
+   "type": "市场调研",
+   "grade": "C",
+   "base_url": "",
+   "coverage": "缝纫线（涤纶/尼龙/邦迪线）",
+   "update_freq": "月度",
+   "confidence": 82
+  }
+ ],
+ "indicators": [
+  {
+   "indicator_code": "CHEM_IDX",
+   "name": "盛泽化纤面料价格指数",
+   "icon": "🧪",
+   "definition": {
+    "category": "化纤",
+    "subcategory": "化纤指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "点",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "SHENGZE_IDX",
+     "source_name": "盛泽丝绸化纤指数",
+     "grade": "B",
+     "price": 101.53,
+     "date": "2026-09-22",
+     "price_caliber": "盛泽化纤面料价格指数",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 98.5
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 98.8
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 99.1
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 99.0
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 99.4
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 99.9
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 100.3
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 100.1
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 100.6
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 100.9
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 101.0
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 101.1
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 101.23
+    },
+    {
+     "date": "2026-08-03",
+     "prices": {},
+     "center_price": 101.3
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 101.3
+    },
+    {
+     "date": "2026-08-17",
+     "prices": {},
+     "center_price": 101.3
+    },
+    {
+     "date": "2026-08-24",
+     "prices": {},
+     "center_price": 101.3
+    },
+    {
+     "date": "2026-08-31",
+     "prices": {},
+     "center_price": 101.34
+    },
+    {
+     "date": "2026-09-07",
+     "prices": {},
+     "center_price": 101.4
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 101.47
+    },
+    {
+     "date": "2026-09-21",
+     "prices": {},
+     "center_price": 101.53
+    }
+   ],
+   "calculated": {
+    "center_price": 101.53,
+    "source_price_range": {
+     "min": 101.53,
+     "max": 101.53
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.06,
+    "week_change_pct": 0.06,
+    "month_change_pct": 0.23,
+    "quarter_change_pct": 1.43,
+    "moving_average": {
+     "ma20": 100.62,
+     "ma60": 100.52
+    },
+    "high_12m": 101.53,
+    "low_12m": 98.5,
+    "percentile_12m": 95,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_150D",
+   "name": "涤纶POY 150D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "涤纶（聚酯纤维）",
+    "specification": "半光",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CCF",
+     "source_name": "中国化纤信息网",
+     "grade": "B",
+     "price": 9342,
+     "date": "2026-09-22",
+     "price_caliber": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 7000
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 7050
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 7100
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 7080
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 7150
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 7200
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 7220
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 7180
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 7200
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 7260
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 7300
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 7330
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 7350
+    },
+    {
+     "date": "2026-08-03",
+     "prices": {},
+     "center_price": 7599.0
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 7848.0
+    },
+    {
+     "date": "2026-08-17",
+     "prices": {},
+     "center_price": 8097.0
+    },
+    {
+     "date": "2026-08-24",
+     "prices": {},
+     "center_price": 8575
+    },
+    {
+     "date": "2026-08-31",
+     "prices": {},
+     "center_price": 8850
+    },
+    {
+     "date": "2026-09-07",
+     "prices": {},
+     "center_price": 9200
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 9250
+    },
+    {
+     "date": "2026-09-21",
+     "prices": {},
+     "center_price": 9342
+    }
+   ],
+   "calculated": {
+    "center_price": 9342,
+    "source_price_range": {
+     "min": 9342,
+     "max": 9342
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.99,
+    "week_change_pct": 0.99,
+    "month_change_pct": 15.38,
+    "quarter_change_pct": 30.11,
+    "moving_average": {
+     "ma20": 7759.05,
+     "ma60": 7722.9
+    },
+    "high_12m": 9342,
+    "low_12m": 7000,
+    "percentile_12m": 95,
+    "trend_direction": "up_strong",
+    "trend_label": "🚀 快速上涨",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_150D_1",
+   "name": "涤纶DTY 150D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "涤纶（聚酯纤维）",
+    "specification": "低弹",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CCF",
+     "source_name": "中国化纤信息网",
+     "grade": "B",
+     "price": 10602,
+     "date": "2026-09-22",
+     "price_caliber": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 10602,
+    "source_price_range": {
+     "min": 10602,
+     "max": 10602
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_150D_2",
+   "name": "涤纶FDY 150D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "涤纶（聚酯纤维）",
+    "specification": "半光",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CCF",
+     "source_name": "中国化纤信息网",
+     "grade": "B",
+     "price": 9787,
+     "date": "2026-09-22",
+     "price_caliber": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 9787,
+    "source_price_range": {
+     "min": 9787,
+     "max": 9787
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_4D",
+   "name": "涤纶短纤 1.4D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "涤纶（聚酯纤维）",
+    "specification": "仿大化",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CCF",
+     "source_name": "中国化纤信息网",
+     "grade": "B",
+     "price": 8700,
+     "date": "2026-09-22",
+     "price_caliber": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 8700,
+    "source_price_range": {
+     "min": 8700,
+     "max": 8700
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_人造丝",
+   "name": "人造丝（粘胶长丝）",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "涤纶（聚酯纤维）",
+    "specification": "元/吨·粘胶长丝 120D，人棉面料用",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CCF",
+     "source_name": "中国化纤信息网",
+     "grade": "B",
+     "price": 20000,
+     "date": "2026-09-22",
+     "price_caliber": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 20000,
+    "source_price_range": {
+     "min": 20000,
+     "max": 20000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_70D",
+   "name": "锦纶6 POY 70D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "锦纶（聚酰胺）",
+    "specification": "锦纶6 POY 70D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 15700,
+     "date": "2026-09-22",
+     "price_caliber": "轻纺原料网 / 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 14200
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 14300
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 14250
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 14400
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 14350
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 14500
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 14480
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 14500
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 14500
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 14550
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 14600
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 14600
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 14600
+    },
+    {
+     "date": "2026-08-03",
+     "prices": {},
+     "center_price": 14737.5
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 14875.0
+    },
+    {
+     "date": "2026-08-17",
+     "prices": {},
+     "center_price": 15012.5
+    },
+    {
+     "date": "2026-08-24",
+     "prices": {},
+     "center_price": 15150.0
+    },
+    {
+     "date": "2026-08-31",
+     "prices": {},
+     "center_price": 15287.5
+    },
+    {
+     "date": "2026-09-07",
+     "prices": {},
+     "center_price": 15425.0
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 15562.5
+    },
+    {
+     "date": "2026-09-21",
+     "prices": {},
+     "center_price": 15700.0
+    }
+   ],
+   "calculated": {
+    "center_price": 15700,
+    "source_price_range": {
+     "min": 15700,
+     "max": 15700
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "day_change_pct": 0.88,
+    "week_change_pct": 0.88,
+    "month_change_pct": 4.58,
+    "quarter_change_pct": 8.28,
+    "moving_average": {
+     "ma20": 14769.0,
+     "ma60": 14741.9
+    },
+    "high_12m": 15700.0,
+    "low_12m": 14200,
+    "percentile_12m": 95,
+    "trend_direction": "up_mild",
+    "trend_label": "↗ 温和上涨",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_70D_1",
+   "name": "锦纶6 DTY 70D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "锦纶（聚酰胺）",
+    "specification": "锦纶6 DTY 70D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 17700,
+     "date": "2026-09-22",
+     "price_caliber": "轻纺原料网 / 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 17700,
+    "source_price_range": {
+     "min": 17700,
+     "max": 17700
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_70D_2",
+   "name": "锦纶6 FDY 70D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "锦纶（聚酰胺）",
+    "specification": "锦纶6 FDY 70D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 15800,
+     "date": "2026-09-22",
+     "price_caliber": "轻纺原料网 / 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 15800,
+    "source_price_range": {
+     "min": 15800,
+     "max": 15800
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_5D",
+   "name": "腈纶短纤 1.5D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "腈纶（聚丙烯腈）",
+    "specification": "本白",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "GFTEX",
+     "source_name": "全球纺织网",
+     "grade": "C",
+     "price": 15975,
+     "date": "2026-09-22",
+     "price_caliber": "轻纺原料网 / 全球纺织网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 14500
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 14550
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 14600
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 14650
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 14700
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 14700
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 14750
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 14700
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 14700
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 14750
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 14800
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 14800
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 14800
+    },
+    {
+     "date": "2026-08-03",
+     "prices": {},
+     "center_price": 14946.9
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 15093.8
+    },
+    {
+     "date": "2026-08-17",
+     "prices": {},
+     "center_price": 15240.6
+    },
+    {
+     "date": "2026-08-24",
+     "prices": {},
+     "center_price": 15387.5
+    },
+    {
+     "date": "2026-08-31",
+     "prices": {},
+     "center_price": 15534.4
+    },
+    {
+     "date": "2026-09-07",
+     "prices": {},
+     "center_price": 15681.2
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 15828.1
+    },
+    {
+     "date": "2026-09-21",
+     "prices": {},
+     "center_price": 15975.0
+    }
+   ],
+   "calculated": {
+    "center_price": 15975,
+    "source_price_range": {
+     "min": 15975,
+     "max": 15975
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "day_change_pct": 0.93,
+    "week_change_pct": 0.93,
+    "month_change_pct": 4.82,
+    "quarter_change_pct": 8.67,
+    "moving_average": {
+     "ma20": 15009.38,
+     "ma60": 14985.12
+    },
+    "high_12m": 15975.0,
+    "low_12m": 14500,
+    "percentile_12m": 95,
+    "trend_direction": "up_mild",
+    "trend_label": "↗ 温和上涨",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_3D",
+   "name": "腈纶丝束 3D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "腈纶（聚丙烯腈）",
+    "specification": "腈纶丝束 3D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "GFTEX",
+     "source_name": "全球纺织网",
+     "grade": "C",
+     "price": 16800,
+     "date": "2026-09-22",
+     "price_caliber": "轻纺原料网 / 全球纺织网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 16800,
+    "source_price_range": {
+     "min": 16800,
+     "max": 16800
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_三醋酸面料",
+   "name": "三醋酸面料（常规）",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "三醋酸",
+    "specification": "三醋酸面料（常规）",
+    "market": "国内（进口浆）",
+    "unit": "元/米",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "PREMIUM_FAB",
+     "source_name": "高端面料市场行情",
+     "grade": "D",
+     "price": 38,
+     "date": "2026-09-22",
+     "price_caliber": "高端面料市场行情 2026-07",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 37
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 38
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 38
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 38
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 38
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 38
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 38
+    }
+   ],
+   "calculated": {
+    "center_price": 38,
+    "source_price_range": {
+     "min": 38,
+     "max": 38
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": 0.0,
+    "moving_average": {
+     "ma20": 37.46,
+     "ma60": 37.46
+    },
+    "high_12m": 38,
+    "low_12m": 37,
+    "percentile_12m": 54,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_三醋酸面料_1",
+   "name": "三醋酸面料（高端/印花）",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "三醋酸",
+    "specification": "三醋酸面料（高端/印花）",
+    "market": "国内（进口浆）",
+    "unit": "元/米",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "PREMIUM_FAB",
+     "source_name": "高端面料市场行情",
+     "grade": "D",
+     "price": 75,
+     "date": "2026-09-22",
+     "price_caliber": "高端面料市场行情 2026-07",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 75,
+    "source_price_range": {
+     "min": 75,
+     "max": 75
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_2D",
+   "name": "粘胶短纤 1.2D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "粘纤（粘胶纤维）",
+    "specification": "粘胶短纤 1.2D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 14500,
+     "date": "2026-09-22",
+     "price_caliber": "生意社 / 中国棉花信息网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 13200
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 13150
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 13100
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 13050
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 13000
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 12950
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 12900
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 12900
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 12900
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 12850
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 12800
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 12800
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 12800
+    },
+    {
+     "date": "2026-08-03",
+     "prices": {},
+     "center_price": 13012.5
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 13225.0
+    },
+    {
+     "date": "2026-08-17",
+     "prices": {},
+     "center_price": 13437.5
+    },
+    {
+     "date": "2026-08-24",
+     "prices": {},
+     "center_price": 13650.0
+    },
+    {
+     "date": "2026-08-31",
+     "prices": {},
+     "center_price": 13862.5
+    },
+    {
+     "date": "2026-09-07",
+     "prices": {},
+     "center_price": 14075.0
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 14287.5
+    },
+    {
+     "date": "2026-09-21",
+     "prices": {},
+     "center_price": 14500.0
+    }
+   ],
+   "calculated": {
+    "center_price": 14500,
+    "source_price_range": {
+     "min": 14500,
+     "max": 14500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 1.49,
+    "week_change_pct": 1.49,
+    "month_change_pct": 7.91,
+    "quarter_change_pct": 12.4,
+    "moving_average": {
+     "ma20": 13262.5,
+     "ma60": 13259.52
+    },
+    "high_12m": 14500.0,
+    "low_12m": 12800,
+    "percentile_12m": 95,
+    "trend_direction": "up_mild",
+    "trend_label": "↗ 温和上涨",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "CHEM_120D",
+   "name": "粘胶长丝 120D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "粘纤（粘胶纤维）",
+    "specification": "粘胶长丝 120D",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 44500,
+     "date": "2026-09-22",
+     "price_caliber": "生意社 / 中国棉花信息网 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 44500,
+    "source_price_range": {
+     "min": 44500,
+     "max": 44500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_20D",
+   "name": "氨纶 20D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "氨纶",
+    "specification": "元/吨·经编/包覆",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 31000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 31000,
+    "source_price_range": {
+     "min": 31000,
+     "max": 31000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_40D",
+   "name": "氨纶 40D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "氨纶",
+    "specification": "元/吨·主流",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 29000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 29000,
+    "source_price_range": {
+     "min": 29000,
+     "max": 29000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "CHEM_70D_3",
+   "name": "氨纶 70D",
+   "icon": "🧪",
+   "focus": false,
+   "definition": {
+    "category": "化纤",
+    "subcategory": "氨纶",
+    "specification": "元/吨·厚织",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 27500,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 27500,
+    "source_price_range": {
+     "min": 27500,
+     "max": 27500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_IDX",
+   "name": "中国棉花价格指数 CCIndex3128B",
+   "icon": "🌱",
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 17641,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花价格指数 CCIndex3128B",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 17520
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 17680
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 17560
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 17820
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 17710
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 17640
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 17890
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 17730
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 17610
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 17900
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 17760
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 17680
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 17641
+    }
+   ],
+   "calculated": {
+    "center_price": 17641,
+    "source_price_range": {
+     "min": 17641,
+     "max": 17641
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": -0.22,
+    "week_change_pct": -0.22,
+    "month_change_pct": -0.5,
+    "moving_average": {
+     "ma20": 17703.15,
+     "ma60": 17703.15
+    },
+    "high_12m": 17900,
+    "low_12m": 17520,
+    "percentile_12m": 31,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "COT_新疆棉CCI",
+   "name": "新疆棉 CCIndex3128B（机采为主）",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "3128B / 含杂1.5% / 马克隆B级",
+    "market": "新疆",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 17381,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 17381,
+    "source_price_range": {
+     "min": 17381,
+     "max": 17381
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_新疆长绒棉",
+   "name": "新疆长绒棉 137",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "137 / 纤维长度≥36mm / 主体马值A",
+    "market": "新疆（阿克苏）",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 25480,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 25480,
+    "source_price_range": {
+     "min": 25480,
+     "max": 25480
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_埃及棉GIZ",
+   "name": "埃及棉 Giza 86",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "Giza86 / 长绒 / 高比强",
+    "market": "埃及",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 26800,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 26800,
+    "source_price_range": {
+     "min": 26800,
+     "max": 26800
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_匹马棉SJV",
+   "name": "匹马棉 SJV Pima",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "SJV Pima / 长绒 / 美棉王",
+    "market": "美国",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 26200,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 26200,
+    "source_price_range": {
+     "min": 26200,
+     "max": 26200
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_美棉EMOT",
+   "name": "美棉 EMOT 3128B",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "EMOT / 含杂低 / 1%关税配额",
+    "market": "美国",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 15900,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 15900,
+    "source_price_range": {
+     "min": 15900,
+     "max": 15900
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_澳棉SM",
+   "name": "澳棉 SM 1-5/32",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "SM 1-5/32 / 高等级",
+    "market": "澳大利亚",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 16100,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 16100,
+    "source_price_range": {
+     "min": 16100,
+     "max": 16100
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "COT_郑州棉花期货",
+   "name": "郑州棉花期货（近期合约，参考）",
+   "icon": "🌱",
+   "focus": false,
+   "definition": {
+    "category": "棉",
+    "subcategory": "棉花（分产地·品级）",
+    "specification": "2026-07-14 盘面",
+    "market": "—",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 15915,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 15915,
+    "source_price_range": {
+     "min": 15915,
+     "max": 15915
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FLAX_IDX",
+   "name": "苎麻原麻（产地均价）",
+   "icon": "🌿",
+   "definition": {
+    "category": "麻",
+    "subcategory": "麻指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 22000,
+     "date": "2026-09-22",
+     "price_caliber": "苎麻原麻（产地均价）",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 21500
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 21600
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 21550
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 21700
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 21680
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 21800
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 21750
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 21900
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 21820
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 21950
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 22000
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 21980
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 22000
+    }
+   ],
+   "calculated": {
+    "center_price": 22000,
+    "source_price_range": {
+     "min": 22000,
+     "max": 22000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.09,
+    "week_change_pct": 0.09,
+    "month_change_pct": 0.46,
+    "moving_average": {
+     "ma20": 21786.92,
+     "ma60": 21786.92
+    },
+    "high_12m": 22000,
+    "low_12m": 21500,
+    "percentile_12m": 85,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "FLAX_苎麻原麻",
+   "name": "苎麻原麻（产地均价）",
+   "icon": "🌿",
+   "focus": false,
+   "definition": {
+    "category": "麻",
+    "subcategory": "苎麻原料",
+    "specification": "年收三季 / 公定回潮",
+    "market": "四川/湖南",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 22000,
+     "date": "2026-09-22",
+     "price_caliber": "中国麻纺 / 四川大竹产区 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 22000,
+    "source_price_range": {
+     "min": 22000,
+     "max": 22000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FLAX_亚麻原麻",
+   "name": "亚麻原麻（雨露/温水）",
+   "icon": "🌿",
+   "focus": false,
+   "definition": {
+    "category": "麻",
+    "subcategory": "苎麻原料",
+    "specification": "元/吨·长纤",
+    "market": "国内/进口",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 16000,
+     "date": "2026-09-22",
+     "price_caliber": "中国麻纺 / 四川大竹产区 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 16000,
+    "source_price_range": {
+     "min": 16000,
+     "max": 16000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FLAX_21NM",
+   "name": "亚麻纱 21Nm",
+   "icon": "🌿",
+   "focus": false,
+   "definition": {
+    "category": "麻",
+    "subcategory": "苎麻原料",
+    "specification": "元/吨·湿纺/干纺",
+    "market": "国内/进口",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 46000,
+     "date": "2026-09-22",
+     "price_caliber": "中国麻纺 / 四川大竹产区 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 46000,
+    "source_price_range": {
+     "min": 46000,
+     "max": 46000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FLAX_汉麻精干麻",
+   "name": "汉麻精干麻",
+   "icon": "🌿",
+   "focus": false,
+   "definition": {
+    "category": "麻",
+    "subcategory": "苎麻原料",
+    "specification": "元/吨·纺织级",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 30000,
+     "date": "2026-09-22",
+     "price_caliber": "中国麻纺 / 四川大竹产区 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 30000,
+    "source_price_range": {
+     "min": 30000,
+     "max": 30000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FLAX_21NM_1",
+   "name": "汉麻纱 21Nm",
+   "icon": "🌿",
+   "focus": false,
+   "definition": {
+    "category": "麻",
+    "subcategory": "苎麻原料",
+    "specification": "元/吨·麻混纺",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHINA_FLAX",
+     "source_name": "中国麻纺",
+     "grade": "B",
+     "price": 58000,
+     "date": "2026-09-22",
+     "price_caliber": "中国麻纺 / 四川大竹产区 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 58000,
+    "source_price_range": {
+     "min": 58000,
+     "max": 58000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SILK_IDX",
+   "name": "生丝 3A 20/22D 厂检丝",
+   "icon": "🧵",
+   "definition": {
+    "category": "丝",
+    "subcategory": "丝指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "SILK_EXCH",
+     "source_name": "中国茧丝绸交易市场",
+     "grade": "A",
+     "price": 444900,
+     "date": "2026-09-22",
+     "price_caliber": "生丝 3A 20/22D 厂检丝",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 440000
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 441500
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 439800
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 442000
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 443200
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 441800
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 444000
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 443500
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 442900
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 445000
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 444200
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 444600
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 444900
+    }
+   ],
+   "calculated": {
+    "center_price": 444900,
+    "source_price_range": {
+     "min": 444900,
+     "max": 444900
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.07,
+    "week_change_pct": 0.07,
+    "month_change_pct": 0.32,
+    "moving_average": {
+     "ma20": 442876.92,
+     "ma60": 442876.92
+    },
+    "high_12m": 445000,
+    "low_12m": 439800,
+    "percentile_12m": 85,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "SILK_22D",
+   "name": "生丝 6A 20/22D 厂检丝",
+   "icon": "🧵",
+   "focus": false,
+   "definition": {
+    "category": "丝",
+    "subcategory": "生丝",
+    "specification": "最高等级 / 纤度均匀洁净优",
+    "market": "浙江桐乡/广西",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "SILK_EXCH",
+     "source_name": "中国茧丝绸交易市场",
+     "grade": "A",
+     "price": 534000,
+     "date": "2026-09-22",
+     "price_caliber": "中国茧丝绸交易市场（金蚕网）/ 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 534000,
+    "source_price_range": {
+     "min": 534000,
+     "max": 534000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SILK_22D_1",
+   "name": "生丝 5A 20/22D 厂检丝",
+   "icon": "🧵",
+   "focus": false,
+   "definition": {
+    "category": "丝",
+    "subcategory": "生丝",
+    "specification": "优等级 / 均匀度好",
+    "market": "浙江桐乡/广西",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "SILK_EXCH",
+     "source_name": "中国茧丝绸交易市场",
+     "grade": "A",
+     "price": 482500,
+     "date": "2026-09-22",
+     "price_caliber": "中国茧丝绸交易市场（金蚕网）/ 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 482500,
+    "source_price_range": {
+     "min": 482500,
+     "max": 482500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SILK_22D_2",
+   "name": "生丝 4A 20/22D 商检丝",
+   "icon": "🧵",
+   "focus": false,
+   "definition": {
+    "category": "丝",
+    "subcategory": "生丝",
+    "specification": "B丝2022D / 高等级",
+    "market": "浙江/四川",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "SILK_EXCH",
+     "source_name": "中国茧丝绸交易市场",
+     "grade": "A",
+     "price": 435600,
+     "date": "2026-09-22",
+     "price_caliber": "中国茧丝绸交易市场（金蚕网）/ 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 435600,
+    "source_price_range": {
+     "min": 435600,
+     "max": 435600
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SILK_22D_3",
+   "name": "生丝 3A 20/22D 厂检丝",
+   "icon": "🧵",
+   "focus": false,
+   "definition": {
+    "category": "丝",
+    "subcategory": "生丝",
+    "specification": "回潮率11% / 解舒良好",
+    "market": "浙江桐乡/广西",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "SILK_EXCH",
+     "source_name": "中国茧丝绸交易市场",
+     "grade": "A",
+     "price": 444900,
+     "date": "2026-09-22",
+     "price_caliber": "中国茧丝绸交易市场（金蚕网）/ 生意社 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 444900,
+    "source_price_range": {
+     "min": 444900,
+     "max": 444900
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_IDX",
+   "name": "南京羊毛市场综合指数",
+   "icon": "🐑",
+   "definition": {
+    "category": "毛",
+    "subcategory": "毛指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 85.0,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场综合指数",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 84.2
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 84.5
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 84.3
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 84.8
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 84.6
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 85.0
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 84.7
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 85.1
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 84.9
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 85.0
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 85.2
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 85.0
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 85.0
+    }
+   ],
+   "calculated": {
+    "center_price": 85.0,
+    "source_price_range": {
+     "min": 85.0,
+     "max": 85.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": -0.12,
+    "moving_average": {
+     "ma20": 84.79,
+     "ma60": 84.79
+    },
+    "high_12m": 85.2,
+    "low_12m": 84.2,
+    "percentile_12m": 54,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "WOOL_110S",
+   "name": "澳毛自梳条 110S",
+   "icon": "🐑",
+   "focus": true,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊毛（分产地·细度）",
+    "specification": "15.5μm / 70S+",
+    "market": "澳大利亚",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 136500,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场 / 国内绒毛监测 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 136500,
+    "source_price_range": {
+     "min": 136500,
+     "max": 136500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_100S",
+   "name": "澳原毛 T54PPPFNF 100S",
+   "icon": "🐑",
+   "focus": true,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊毛（分产地·细度）",
+    "specification": "16.5μm / 64~70S",
+    "market": "澳大利亚",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 82700,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场 / 国内绒毛监测 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 82700,
+    "source_price_range": {
+     "min": 82700,
+     "max": 82700
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_国产细羊毛",
+   "name": "国产细羊毛（内蒙古改良种 64支）",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊毛（分产地·细度）",
+    "specification": "64支 / 细度约21μm",
+    "market": "内蒙古",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 62000,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场 / 国内绒毛监测 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 62000,
+    "source_price_range": {
+     "min": 62000,
+     "max": 62000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_国产细羊毛_1",
+   "name": "国产细羊毛（新疆细毛 66支）",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊毛（分产地·细度）",
+    "specification": "66支 / 细度约20μm",
+    "market": "新疆",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 68000,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场 / 国内绒毛监测 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 68000,
+    "source_price_range": {
+     "min": 68000,
+     "max": 68000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_南京羊毛市场",
+   "name": "南京羊毛市场综合指数（折算）",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊毛（分产地·细度）",
+    "specification": "≈85元/公斤",
+    "market": "综合",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WOOL_NJ",
+     "source_name": "南京羊毛市场",
+     "grade": "A",
+     "price": 85190,
+     "date": "2026-09-22",
+     "price_caliber": "南京羊毛市场 / 国内绒毛监测 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 85190,
+    "source_price_range": {
+     "min": 85190,
+     "max": 85190
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_15P5ΜM",
+   "name": "羊绒无毛绒 15.5μm",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊绒",
+    "specification": "白中白（成本基准）",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 850,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 840
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 842
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 845
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 848
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 845
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 848
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 850
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 850
+    }
+   ],
+   "calculated": {
+    "center_price": 850,
+    "source_price_range": {
+     "min": 850,
+     "max": 850
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": 0.0,
+    "moving_average": {
+     "ma20": 847.54,
+     "ma60": 847.54
+    },
+    "high_12m": 850,
+    "low_12m": 840,
+    "percentile_12m": 46,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "WOOL_16NM_2",
+   "name": "羊绒纱 16Nm/2",
+   "icon": "🐑",
+   "focus": true,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊绒",
+    "specification": "粗纺16支 · 我司主力 · 参考价=无毛绒+粗纺加工费，以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 1000,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1000,
+    "source_price_range": {
+     "min": 1000,
+     "max": 1000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_18NM_2",
+   "name": "羊绒纱 18Nm/2",
+   "icon": "🐑",
+   "focus": true,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊绒",
+    "specification": "半精纺18支 · 我司主力 · 参考价以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 1030,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1030,
+    "source_price_range": {
+     "min": 1030,
+     "max": 1030
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_26NM_2",
+   "name": "羊绒纱 26Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊绒",
+    "specification": "精纺26支",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 1100,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1100,
+    "source_price_range": {
+     "min": 1100,
+     "max": 1100
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_13P5ΜM",
+   "name": "羊绒无毛绒 baby级 13.5μm",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊绒",
+    "specification": "白中白/baby级",
+    "market": "国内/进口",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 1150,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1150,
+    "source_price_range": {
+     "min": 1150,
+     "max": 1150
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_马海毛原毛",
+   "name": "马海毛原毛（原色）",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "马海毛",
+    "specification": "成本基准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 120,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 马海毛行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 118
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 118
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 119
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 119
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 120
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 120
+    }
+   ],
+   "calculated": {
+    "center_price": 120,
+    "source_price_range": {
+     "min": 120,
+     "max": 120
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": 0.0,
+    "moving_average": {
+     "ma20": 119.54,
+     "ma60": 119.54
+    },
+    "high_12m": 120,
+    "low_12m": 118,
+    "percentile_12m": 31,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "WOOL_16NM_2_1",
+   "name": "马海毛纱 16Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "马海毛",
+    "specification": "粗纺16支 · 我司主力 · 参考价以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 185,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 马海毛行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 185,
+    "source_price_range": {
+     "min": 185,
+     "max": 185
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_18NM_2_1",
+   "name": "马海毛纱 18Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "马海毛",
+    "specification": "粗纺18支 · 我司主力 · 参考价以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 190,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 马海毛行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 190,
+    "source_price_range": {
+     "min": 190,
+     "max": 190
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_110NM_2",
+   "name": "马海毛纱 110Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "马海毛",
+    "specification": "精纺高支",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 210,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 马海毛行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 210,
+    "source_price_range": {
+     "min": 210,
+     "max": 210
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_牦牛绒无毛绒",
+   "name": "牦牛绒无毛绒",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "牦牛绒",
+    "specification": "成本基准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 600,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 牦牛绒行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 590
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 592
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 595
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 598
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 595
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 598
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 600
+    }
+   ],
+   "calculated": {
+    "center_price": 600,
+    "source_price_range": {
+     "min": 600,
+     "max": 600
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": 0.0,
+    "moving_average": {
+     "ma20": 597.54,
+     "ma60": 597.54
+    },
+    "high_12m": 600,
+    "low_12m": 590,
+    "percentile_12m": 46,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "WOOL_16NM_2_2",
+   "name": "牦牛绒纱 16Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "牦牛绒",
+    "specification": "粗纺16支 · 我司主力 · 参考价以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 745,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 牦牛绒行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 745,
+    "source_price_range": {
+     "min": 745,
+     "max": 745
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_18NM_2_2",
+   "name": "牦牛绒纱 18Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "牦牛绒",
+    "specification": "粗纺18支 · 我司主力 · 参考价以实际询价为准",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 760,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 牦牛绒行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 760,
+    "source_price_range": {
+     "min": 760,
+     "max": 760
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_28NM_2",
+   "name": "牦牛绒纱 28Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "牦牛绒",
+    "specification": "精纺28支",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CASHMERE_MKT",
+     "source_name": "绒毛交易市场",
+     "grade": "B",
+     "price": 820,
+     "date": "2026-09-22",
+     "price_caliber": "绒毛交易市场 / 牦牛绒行情 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 820,
+    "source_price_range": {
+     "min": 820,
+     "max": 820
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_羊驼毛无毛绒",
+   "name": "羊驼毛无毛绒",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊驼毛",
+    "specification": "元/公斤·幼羊驼/成羊驼；80-120",
+    "market": "进口(秘鲁)",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 98,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 98,
+    "source_price_range": {
+     "min": 98,
+     "max": 98
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "WOOL_60NM_2",
+   "name": "羊驼毛纱 60Nm/2",
+   "icon": "🐑",
+   "focus": false,
+   "definition": {
+    "category": "毛",
+    "subcategory": "羊驼毛",
+    "specification": "元/公斤·精纺",
+    "market": "进口(秘鲁)",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 330,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 330,
+    "source_price_range": {
+     "min": 330,
+     "max": 330
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_IDX",
+   "name": "90% 白鸭绒",
+   "icon": "🪶",
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "羽绒指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 565,
+     "date": "2026-09-22",
+     "price_caliber": "90% 白鸭绒",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 600
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 605
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 608
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 612
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 610
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 615
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 618
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 612
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 605
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 595
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 585
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 575
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 565
+    }
+   ],
+   "calculated": {
+    "center_price": 565,
+    "source_price_range": {
+     "min": 565,
+     "max": 565
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "day_change_pct": -1.74,
+    "week_change_pct": -1.74,
+    "month_change_pct": -7.68,
+    "moving_average": {
+     "ma20": 600.38,
+     "ma60": 600.38
+    },
+    "high_12m": 618,
+    "low_12m": 565,
+    "percentile_12m": 0,
+    "trend_direction": "down_mild",
+    "trend_label": "↘ 温和下跌",
+    "price_position": "低位"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒",
+   "name": "95绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鸭绒",
+    "specification": "绒子含量 95% · GB/T 14272-2021 口径 · 白鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 638,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 638,
+    "source_price_range": {
+     "min": 638,
+     "max": 638
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_1",
+   "name": "90绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鸭绒",
+    "specification": "绒子含量 90% · GB/T 14272-2021 口径 · 白鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 565,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 565,
+    "source_price_range": {
+     "min": 565,
+     "max": 565
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_2",
+   "name": "85绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鸭绒",
+    "specification": "绒子含量 85% · GB/T 14272-2021 口径 · 白鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 522,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 522,
+    "source_price_range": {
+     "min": 522,
+     "max": 522
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_3",
+   "name": "95绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鸭绒",
+    "specification": "绒子含量 95% · GB/T 14272-2021 口径 · 灰鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 604,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 604,
+    "source_price_range": {
+     "min": 604,
+     "max": 604
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_4",
+   "name": "90绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鸭绒",
+    "specification": "绒子含量 90% · GB/T 14272-2021 口径 · 灰鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 535,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 535,
+    "source_price_range": {
+     "min": 535,
+     "max": 535
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_5",
+   "name": "85绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鸭绒",
+    "specification": "绒子含量 85% · GB/T 14272-2021 口径 · 灰鸭绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 494,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 494,
+    "source_price_range": {
+     "min": 494,
+     "max": 494
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_6",
+   "name": "95绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鹅绒",
+    "specification": "绒子含量 95% · GB/T 14272-2021 口径 · 白鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 1113,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1113,
+    "source_price_range": {
+     "min": 1113,
+     "max": 1113
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_7",
+   "name": "90绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鹅绒",
+    "specification": "绒子含量 90% · GB/T 14272-2021 口径 · 白鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 985,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 985,
+    "source_price_range": {
+     "min": 985,
+     "max": 985
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_8",
+   "name": "85绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "白鹅绒",
+    "specification": "绒子含量 85% · GB/T 14272-2021 口径 · 白鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 910,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 910,
+    "source_price_range": {
+     "min": 910,
+     "max": 910
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_9",
+   "name": "95绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鹅绒",
+    "specification": "绒子含量 95% · GB/T 14272-2021 口径 · 灰鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 1018,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1018,
+    "source_price_range": {
+     "min": 1018,
+     "max": 1018
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_10",
+   "name": "90绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鹅绒",
+    "specification": "绒子含量 90% · GB/T 14272-2021 口径 · 灰鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 901,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 901,
+    "source_price_range": {
+     "min": 901,
+     "max": 901
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "DOWN_绒_11",
+   "name": "85绒",
+   "icon": "🪶",
+   "focus": true,
+   "definition": {
+    "category": "羽绒",
+    "subcategory": "灰鹅绒",
+    "specification": "绒子含量 85% · GB/T 14272-2021 口径 · 灰鹅绒",
+    "market": "国内",
+    "unit": "元/公斤",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "DOWN_GOLD",
+     "source_name": "羽绒金网",
+     "grade": "B",
+     "price": 833,
+     "date": "2026-09-22",
+     "price_caliber": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 833,
+    "source_price_range": {
+     "min": 833,
+     "max": 833
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_IDX",
+   "name": "头层黄牛皮（纳帕）",
+   "icon": "🐄",
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "皮毛草指数",
+    "specification": "综合指数",
+    "market": "国内",
+    "unit": "元/平方英尺",
+    "price_type": "指数价"
+   },
+   "is_index": true,
+   "sources": [
+    {
+     "source_code": "WENLEATHER",
+     "source_name": "温州皮革市场",
+     "grade": "C",
+     "price": 24.0,
+     "date": "2026-09-22",
+     "price_caliber": "头层黄牛皮（纳帕）",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-05-04",
+     "prices": {},
+     "center_price": 23.5
+    },
+    {
+     "date": "2026-05-11",
+     "prices": {},
+     "center_price": 23.6
+    },
+    {
+     "date": "2026-05-18",
+     "prices": {},
+     "center_price": 23.4
+    },
+    {
+     "date": "2026-05-25",
+     "prices": {},
+     "center_price": 23.8
+    },
+    {
+     "date": "2026-06-01",
+     "prices": {},
+     "center_price": 23.7
+    },
+    {
+     "date": "2026-06-08",
+     "prices": {},
+     "center_price": 23.9
+    },
+    {
+     "date": "2026-06-15",
+     "prices": {},
+     "center_price": 23.8
+    },
+    {
+     "date": "2026-06-22",
+     "prices": {},
+     "center_price": 24.0
+    },
+    {
+     "date": "2026-06-29",
+     "prices": {},
+     "center_price": 23.9
+    },
+    {
+     "date": "2026-07-06",
+     "prices": {},
+     "center_price": 24.1
+    },
+    {
+     "date": "2026-07-13",
+     "prices": {},
+     "center_price": 24.0
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 24.0
+    },
+    {
+     "date": "2026-07-27",
+     "prices": {},
+     "center_price": 24.0
+    }
+   ],
+   "calculated": {
+    "center_price": 24.0,
+    "source_price_range": {
+     "min": 24.0,
+     "max": 24.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "day_change_pct": 0.0,
+    "week_change_pct": 0.0,
+    "month_change_pct": 0.0,
+    "moving_average": {
+     "ma20": 23.82,
+     "ma60": 23.82
+    },
+    "high_12m": 24.1,
+    "low_12m": 23.4,
+    "percentile_12m": 62,
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "中位"
+   }
+  },
+  {
+   "indicator_code": "FUR_胎牛毛皮",
+   "name": "胎牛毛皮（A级）",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "牛毛皮/胎牛毛",
+    "specification": "整张 / 自然毛流",
+    "market": "进口（欧洲/南美）",
+    "unit": "元/平方英尺",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WENLEATHER",
+     "source_name": "温州皮革市场",
+     "grade": "C",
+     "price": 45.8,
+     "date": "2026-09-22",
+     "price_caliber": "温州皮革市场 2026-06",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 45.8,
+    "source_price_range": {
+     "min": 45.8,
+     "max": 45.8
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_胎牛毛皮_1",
+   "name": "胎牛毛皮（压花）",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "牛毛皮/胎牛毛",
+    "specification": "整张 / 工艺处理",
+    "market": "国内（压花加工）",
+    "unit": "元/平方英尺",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "WENLEATHER",
+     "source_name": "温州皮革市场",
+     "grade": "C",
+     "price": 56.0,
+     "date": "2026-09-22",
+     "price_caliber": "温州皮革市场 2026-06",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 56.0,
+    "source_price_range": {
+     "min": 56.0,
+     "max": 56.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_貉子毛条",
+   "name": "貉子毛条",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "55~65cm / 国产普通路",
+    "market": "国内（河北/辽宁）",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 35,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 35,
+    "source_price_range": {
+     "min": 35,
+     "max": 35
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_貉子毛条_1",
+   "name": "貉子毛条（精梳长绒）",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "70cm+ / 高路分",
+    "market": "国内（河北）",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 75,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 75,
+    "source_price_range": {
+     "min": 75,
+     "max": 75
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_狐狸毛条",
+   "name": "狐狸毛条（蓝狐/银狐）",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "60~70cm",
+    "market": "国内（山东）/ 丹麦进口",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 60,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 60,
+    "source_price_range": {
+     "min": 60,
+     "max": 60
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_水貂毛条",
+   "name": "水貂毛条",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "45~55cm / 高等级",
+    "market": "国内（大连）/ 丹麦进口",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 90,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 90,
+    "source_price_range": {
+     "min": 90,
+     "max": 90
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_兔毛条",
+   "name": "兔毛条（獭兔）",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "40~50cm",
+    "market": "国内（山东/四川）",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 18,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 18,
+    "source_price_range": {
+     "min": 18,
+     "max": 18
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "FUR_羊羔毛条",
+   "name": "羊羔毛条",
+   "icon": "🐄",
+   "focus": false,
+   "definition": {
+    "category": "皮毛草",
+    "subcategory": "毛条（裘皮类镶边料）",
+    "specification": "35~45cm / 卷曲",
+    "market": "国内（内蒙）",
+    "unit": "元/条",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "CHONGFU",
+     "source_name": "崇福皮草城",
+     "grade": "C",
+     "price": 28,
+     "date": "2026-09-22",
+     "price_caliber": "毛皮市场行情 / 崇福皮草城 2026",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 28,
+    "source_price_range": {
+     "min": 28,
+     "max": 28
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_沪铜主力合约",
+   "name": "沪铜主力合约",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "铜（金属辅料原料）",
+    "specification": "期货结算价 · 拉链/四合扣等辅料原料基准",
+    "market": "上期所",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 72800,
+     "date": "2026-09-22",
+     "price_caliber": "上海期货交易所 / 长江有色金属网 / 生意社 2026-09-22",
+     "source_url": ""
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-07-01",
+     "prices": {},
+     "center_price": 68500
+    },
+    {
+     "date": "2026-07-10",
+     "prices": {},
+     "center_price": 69000
+    },
+    {
+     "date": "2026-07-20",
+     "prices": {},
+     "center_price": 69500
+    },
+    {
+     "date": "2026-07-30",
+     "prices": {},
+     "center_price": 70000
+    },
+    {
+     "date": "2026-08-10",
+     "prices": {},
+     "center_price": 70200
+    },
+    {
+     "date": "2026-08-20",
+     "prices": {},
+     "center_price": 70500
+    },
+    {
+     "date": "2026-08-23",
+     "prices": {},
+     "center_price": 70500
+    },
+    {
+     "date": "2026-08-28",
+     "prices": {},
+     "center_price": 70800
+    },
+    {
+     "date": "2026-09-01",
+     "prices": {},
+     "center_price": 71000
+    },
+    {
+     "date": "2026-09-02",
+     "prices": {},
+     "center_price": 71200
+    },
+    {
+     "date": "2026-09-06",
+     "prices": {},
+     "center_price": 71500
+    },
+    {
+     "date": "2026-09-10",
+     "prices": {},
+     "center_price": 72000
+    },
+    {
+     "date": "2026-09-14",
+     "prices": {},
+     "center_price": 71800
+    },
+    {
+     "date": "2026-09-18",
+     "prices": {},
+     "center_price": 72500
+    },
+    {
+     "date": "2026-09-22",
+     "prices": {},
+     "center_price": 72800
+    }
+   ],
+   "calculated": {
+    "center_price": 72800,
+    "source_price_range": {
+     "min": 72800,
+     "max": 72800
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "day_change_pct": 0.41,
+    "week_change_pct": 1.39,
+    "month_change_pct": 3.26,
+    "moving_average": {
+     "ma20": 70786.67,
+     "ma60": 70786.67
+    },
+    "high_12m": 72800,
+    "low_12m": 68500,
+    "percentile_12m": 93,
+    "trend_direction": "up_mild",
+    "trend_label": "↗ 温和上涨",
+    "price_position": "高位"
+   }
+  },
+  {
+   "indicator_code": "TRIM_黄铜带H",
+   "name": "黄铜带 H62",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "铜（金属辅料原料）",
+    "specification": "拉链齿/四合扣基体主要原料",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 56800,
+     "date": "2026-09-22",
+     "price_caliber": "上海期货交易所 / 长江有色金属网 / 生意社 2026-09-22",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 56800,
+    "source_price_range": {
+     "min": 56800,
+     "max": 56800
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_紫铜线T",
+   "name": "紫铜线 T2",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "铜（金属辅料原料）",
+    "specification": "线扣/弹簧辅料用",
+    "market": "国内",
+    "unit": "元/吨",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "RAWMEX",
+     "source_name": "生意社",
+     "grade": "C",
+     "price": 73500,
+     "date": "2026-09-22",
+     "price_caliber": "上海期货交易所 / 长江有色金属网 / 生意社 2026-09-22",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 73500,
+    "source_price_range": {
+     "min": 73500,
+     "max": 73500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_拉链",
+   "name": "拉链（尼龙/树脂·常规）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "拉链",
+    "specification": "元/条·60cm内；尼龙0.3-1.5、树脂闭尾1.2-3.0",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.2,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.2,
+    "source_price_range": {
+     "min": 1.2,
+     "max": 1.2
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_拉链_1",
+   "name": "拉链（金属闭尾）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "拉链",
+    "specification": "元/条；2.5-6，防爆/重型4-12；部分厂年锁价",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 4.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 4.0,
+    "source_price_range": {
+     "min": 4.0,
+     "max": 4.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_纽扣",
+   "name": "纽扣（树脂/金属）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "纽扣",
+    "specification": "元/颗；树脂0.03-0.3、合金0.1-1、铜扣1-5",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.3,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.3,
+    "source_price_range": {
+     "min": 0.3,
+     "max": 0.3
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_纽扣_1",
+   "name": "纽扣（牛角类·天然）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "纽扣",
+    "specification": "元/颗；天然牛角手工打磨，高端2-10",
+    "market": "国内/进口",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 3.5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 3.5,
+    "source_price_range": {
+     "min": 3.5,
+     "max": 3.5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_织带",
+   "name": "织带（涤纶/棉）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "织带·衬布·胶条",
+    "specification": "元/米；常规涤纶0.05-0.3、棉/特殊0.2-1；蕾丝0.5-20；GRS溢价",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.3,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.3,
+    "source_price_range": {
+     "min": 0.3,
+     "max": 0.3
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_衬布",
+   "name": "衬布（粘合衬/无纺）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "织带·衬布·胶条",
+    "specification": "元/米·幅宽90-120cm；PA/PES双点",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 2.2,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 2.2,
+    "source_price_range": {
+     "min": 2.2,
+     "max": 2.2
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_胶条",
+   "name": "胶条（热封/门襟）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "织带·衬布·胶条",
+    "specification": "元/米·宽3-22mm；TPU/PU热封条",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.6,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.6,
+    "source_price_range": {
+     "min": 0.6,
+     "max": 0.6
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_吊牌",
+   "name": "吊牌（纸质/防伪）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "标牌·洗水唛",
+    "specification": "元/张；250-350g铜版+防伪码",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.25,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.25,
+    "source_price_range": {
+     "min": 0.25,
+     "max": 0.25
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_洗水唛",
+   "name": "洗水唛（织标/印标）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "标牌·洗水唛",
+    "specification": "元/张；缎面织标/热转印，含洗护图标",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.18,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.18,
+    "source_price_range": {
+     "min": 0.18,
+     "max": 0.18
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_贝壳纽扣",
+   "name": "贝壳纽扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "装饰纽扣·天然",
+    "specification": "元/颗·天然贝壳扣（海水/淡水贝）",
+    "market": "国内/进口",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.5,
+    "source_price_range": {
+     "min": 1.5,
+     "max": 1.5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_牛骨纽扣",
+   "name": "牛骨纽扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "装饰纽扣·天然",
+    "specification": "元/颗·牛骨扣，手工打磨",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.0,
+    "source_price_range": {
+     "min": 1.0,
+     "max": 1.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_椰壳纽扣",
+   "name": "椰壳纽扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "装饰纽扣·天然",
+    "specification": "元/颗·椰壳扣，天然纹理",
+    "market": "国内/东南亚",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.2,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.2,
+    "source_price_range": {
+     "min": 1.2,
+     "max": 1.2
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_木质纽扣",
+   "name": "木质纽扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "装饰纽扣·天然",
+    "specification": "元/颗·天然木扣（榉木/竹）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.8,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.8,
+    "source_price_range": {
+     "min": 0.8,
+     "max": 0.8
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_羊角纽扣",
+   "name": "羊角纽扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "装饰纽扣·天然",
+    "specification": "元/颗·羊角扣，天然材质溢价",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 3.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 3.0,
+    "source_price_range": {
+     "min": 3.0,
+     "max": 3.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_水晶锆石烫钻",
+   "name": "水晶/锆石烫钻",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "珠宝装饰·烫钻",
+    "specification": "元/千颗·环保烫钻 SS6-SS20",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 80,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 80,
+    "source_price_range": {
+     "min": 80,
+     "max": 80
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_珍珠",
+   "name": "珍珠（淡水）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "珠宝装饰·烫钻",
+    "specification": "元/颗·淡水珍珠 4-8mm",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 2.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 2.0,
+    "source_price_range": {
+     "min": 2.0,
+     "max": 2.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_玉石珠",
+   "name": "玉石珠",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "珠宝装饰·烫钻",
+    "specification": "元/颗·天然玉石珠（装饰）",
+    "market": "国内/缅甸",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.0,
+    "source_price_range": {
+     "min": 1.0,
+     "max": 1.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_玻璃珠",
+   "name": "玻璃珠",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "珠宝装饰·烫钻",
+    "specification": "元/颗·玻璃珠/琉璃珠",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.15,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.15,
+    "source_price_range": {
+     "min": 0.15,
+     "max": 0.15
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_牛皮纸",
+   "name": "牛皮纸",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "纸类辅料",
+    "specification": "元/kg·120g 牛皮纸（包装/吊牌）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 8,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 8,
+    "source_price_range": {
+     "min": 8,
+     "max": 8
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_杜邦纸",
+   "name": "杜邦纸（Tyvek）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "纸类辅料",
+    "specification": "元/m²·Tyvek 1056D 特种纸",
+    "market": "进口",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 45,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 45,
+    "source_price_range": {
+     "min": 45,
+     "max": 45
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_艺术纸",
+   "name": "艺术纸",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "纸类辅料",
+    "specification": "元/张·珠光/触感艺术纸（高定吊牌）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 1.5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 1.5,
+    "source_price_range": {
+     "min": 1.5,
+     "max": 1.5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_亚克力扣标",
+   "name": "亚克力扣/标",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "塑料配件",
+    "specification": "元/个·亚克力注塑扣标",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.4,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.4,
+    "source_price_range": {
+     "min": 0.4,
+     "max": 0.4
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_ABS注塑扣",
+   "name": "ABS 注塑扣",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "塑料配件",
+    "specification": "元/个·ABS 插扣/日字扣/胸针",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.2,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.2,
+    "source_price_range": {
+     "min": 0.2,
+     "max": 0.2
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_PET织带",
+   "name": "PET 织带",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "塑料配件",
+    "specification": "元/米·PET 再生织带（GRS）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.5,
+    "source_price_range": {
+     "min": 0.5,
+     "max": 0.5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_橡胶丝",
+   "name": "橡胶丝（松紧带用）",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "弹性体",
+    "specification": "元/kg·乳胶丝/橡胶丝，氨纶包覆",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 16,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 16,
+    "source_price_range": {
+     "min": 16,
+     "max": 16
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "TRIM_硅胶标",
+   "name": "硅胶标",
+   "icon": "🔗",
+   "focus": false,
+   "definition": {
+    "category": "辅料",
+    "subcategory": "弹性体",
+    "specification": "元/个·硅胶滴塑标/硅胶扣",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.3,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.3,
+    "source_price_range": {
+     "min": 0.3,
+     "max": 0.3
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "YARN_32S",
+   "name": "棉纱 C32S",
+   "icon": "🧶",
+   "focus": false,
+   "definition": {
+    "category": "纱线",
+    "subcategory": "纱线",
+    "specification": "元/吨·环锭/紧密纺",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 24000,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 24000,
+    "source_price_range": {
+     "min": 24000,
+     "max": 24000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "YARN_40S",
+   "name": "棉纱 C40S",
+   "icon": "🧶",
+   "focus": false,
+   "definition": {
+    "category": "纱线",
+    "subcategory": "纱线",
+    "specification": "元/吨·环锭纺",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 24900,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 24900,
+    "source_price_range": {
+     "min": 24900,
+     "max": 24900
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "YARN_40S_1",
+   "name": "精梳棉纱 JC40S",
+   "icon": "🧶",
+   "focus": false,
+   "definition": {
+    "category": "纱线",
+    "subcategory": "纱线",
+    "specification": "元/吨·精梳",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 25600,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 25600,
+    "source_price_range": {
+     "min": 25600,
+     "max": 25600
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "YARN_45S",
+   "name": "涤棉纱 T65/C35 45S",
+   "icon": "🧶",
+   "focus": false,
+   "definition": {
+    "category": "纱线",
+    "subcategory": "纱线",
+    "specification": "元/吨·混纺",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 17500,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 17500,
+    "source_price_range": {
+     "min": 17500,
+     "max": 17500
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "YARN_30S",
+   "name": "粘胶纱 30S",
+   "icon": "🧶",
+   "focus": false,
+   "definition": {
+    "category": "纱线",
+    "subcategory": "纱线",
+    "specification": "元/吨·人棉",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "COTTON_CHINA",
+     "source_name": "中国棉花信息网",
+     "grade": "A",
+     "price": 18400,
+     "date": "2026-09-22",
+     "price_caliber": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 18400,
+    "source_price_range": {
+     "min": 18400,
+     "max": 18400
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "medium",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SEW_40S",
+   "name": "涤纶缝纫线 40S/2",
+   "icon": "🪡",
+   "focus": false,
+   "definition": {
+    "category": "缝纫线",
+    "subcategory": "缝纫线",
+    "specification": "元/吨·本白/染色",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 18000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 18000,
+    "source_price_range": {
+     "min": 18000,
+     "max": 18000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SEW_20S",
+   "name": "高强缝纫线 20S/3",
+   "icon": "🪡",
+   "focus": false,
+   "definition": {
+    "category": "缝纫线",
+    "subcategory": "缝纫线",
+    "specification": "元/吨·箱包/鞋",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 22000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 22000,
+    "source_price_range": {
+     "min": 22000,
+     "max": 22000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SEW_70D",
+   "name": "尼龙缝纫线 70D",
+   "icon": "🪡",
+   "focus": false,
+   "definition": {
+    "category": "缝纫线",
+    "subcategory": "缝纫线",
+    "specification": "元/吨·锦纶",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 35000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 35000,
+    "source_price_range": {
+     "min": 35000,
+     "max": 35000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "SEW_邦迪线",
+   "name": "邦迪线（涤纶长丝）",
+   "icon": "🪡",
+   "focus": false,
+   "definition": {
+    "category": "缝纫线",
+    "subcategory": "缝纫线",
+    "specification": "元/吨·包芯",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 45000,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 45000,
+    "source_price_range": {
+     "min": 45000,
+     "max": 45000
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_锌合金",
+   "name": "锌合金（压铸·5#）",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "锌合金",
+    "specification": "元/kg·压铸锌合金，拉链头/插扣/针扣坯料",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 22,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 22,
+    "source_price_range": {
+     "min": 22,
+     "max": 22
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_锌合金拉链头",
+   "name": "锌合金拉链头/插扣",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "锌合金",
+    "specification": "元/个·滚模压铸，按克重计价",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 0.35,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 0.35,
+    "source_price_range": {
+     "min": 0.35,
+     "max": 0.35
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_铜合金",
+   "name": "铜合金（黄铜 H62）",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "铜合金",
+    "specification": "元/kg·拉链牙齿/金属扣/气眼基材",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 58,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 58,
+    "source_price_range": {
+     "min": 58,
+     "max": 58
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_黄铜气眼铆钉",
+   "name": "黄铜气眼/铆钉",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "铜合金",
+    "specification": "元/千个·四合扣/鸡眼，按规格",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 8,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 8,
+    "source_price_range": {
+     "min": 8,
+     "max": 8
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_铝合金",
+   "name": "铝合金（A380 压铸）",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "铝合金·铁",
+    "specification": "元/kg·轻量扣具/D扣/日字扣",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 20,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 20,
+    "source_price_range": {
+     "min": 20,
+     "max": 20
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "HW_铁",
+   "name": "铁（冷轧·铆钉/鸡眼）",
+   "icon": "🔩",
+   "focus": false,
+   "definition": {
+    "category": "五金",
+    "subcategory": "铝合金·铁",
+    "specification": "元/kg·四合扣/工字扣基材",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 5,
+    "source_price_range": {
+     "min": 5,
+     "max": 5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_头层黄牛皮",
+   "name": "头层黄牛皮（纳帕）",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "真皮",
+    "specification": "1.1~1.3mm / 全粒面",
+    "market": "国内（豫鲁）/ 巴西进口",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 24.0,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 24.0,
+    "source_price_range": {
+     "min": 24.0,
+     "max": 24.0
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_头层黄牛皮_1",
+   "name": "头层黄牛皮（普通）",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "真皮",
+    "specification": "1.1~1.2mm / 修面",
+    "market": "国内（豫鲁）",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 22.5,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 22.5,
+    "source_price_range": {
+     "min": 22.5,
+     "max": 22.5
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_二层黄牛皮",
+   "name": "二层黄牛皮",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "真皮",
+    "specification": "1.5~1.8mm / 移膜",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 4.8,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 4.8,
+    "source_price_range": {
+     "min": 4.8,
+     "max": 4.8
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_头层羊皮",
+   "name": "头层羊皮",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "真皮",
+    "specification": "元/SF·头层羊皮（服装/手套）",
+    "market": "国内/进口",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 20,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 20,
+    "source_price_range": {
+     "min": 20,
+     "max": 20
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_头层猪皮",
+   "name": "头层猪皮",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "真皮",
+    "specification": "元/SF·头层猪皮（绒面/反绒）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 11,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 11,
+    "source_price_range": {
+     "min": 11,
+     "max": 11
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_PU合成革",
+   "name": "PU 合成革",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "假皮",
+    "specification": "元/SF·PU 合成革（普通/超纤）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 13,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 13,
+    "source_price_range": {
+     "min": 13,
+     "max": 13
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  },
+  {
+   "indicator_code": "LEATHER_PVC人造革",
+   "name": "PVC 人造革",
+   "icon": "🟫",
+   "focus": false,
+   "definition": {
+    "category": "皮革",
+    "subcategory": "假皮",
+    "specification": "元/SF·PVC 人造革（压花/镜面）",
+    "market": "国内",
+    "unit": "",
+    "price_type": "市场价"
+   },
+   "sources": [
+    {
+     "source_code": "MARKET",
+     "source_name": "市场综合",
+     "grade": "D",
+     "price": 9,
+     "date": "2026-09-22",
+     "price_caliber": "",
+     "source_url": ""
+    }
+   ],
+   "history": [],
+   "calculated": {
+    "center_price": 9,
+    "source_price_range": {
+     "min": 9,
+     "max": 9
+    },
+    "source_count": 1,
+    "price_dispersion": 0.0,
+    "confidence": "low",
+    "trend_direction": "flat",
+    "trend_label": "→ 横盘",
+    "price_position": "未知"
+   }
+  }
+ ],
+ "groups": [
+  {
+   "category_code": "huaxian",
+   "category_name": "化纤",
+   "icon": "🧪",
+   "subgroups": [
+    {
+     "sub_name": "涤纶（聚酯纤维）",
+     "unit": "元/吨",
+     "source": "中国化纤信息网 / 生意社 / 轻纺原料网 2026-09-21",
+     "indicator_codes": [
+      "CHEM_150D",
+      "CHEM_150D_1",
+      "CHEM_150D_2",
+      "CHEM_4D",
+      "CHEM_人造丝"
+     ]
+    },
+    {
+     "sub_name": "锦纶（聚酰胺）",
+     "unit": "元/吨",
+     "source": "轻纺原料网 / 生意社 2026-09-21",
+     "indicator_codes": [
+      "CHEM_70D",
+      "CHEM_70D_1",
+      "CHEM_70D_2"
+     ]
+    },
+    {
+     "sub_name": "腈纶（聚丙烯腈）",
+     "unit": "元/吨",
+     "source": "轻纺原料网 / 全球纺织网 2026-09-21",
+     "indicator_codes": [
+      "CHEM_5D",
+      "CHEM_3D"
+     ]
+    },
+    {
+     "sub_name": "三醋酸",
+     "unit": "元/米",
+     "source": "高端面料市场行情 2026-07",
+     "indicator_codes": [
+      "CHEM_三醋酸面料",
+      "CHEM_三醋酸面料_1"
+     ]
+    },
+    {
+     "sub_name": "粘纤（粘胶纤维）",
+     "unit": "元/吨",
+     "source": "生意社 / 中国棉花信息网 2026-09-21",
+     "indicator_codes": [
+      "CHEM_2D",
+      "CHEM_120D"
+     ]
+    },
+    {
+     "sub_name": "氨纶",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "CHEM_20D",
+      "CHEM_40D",
+      "CHEM_70D_3"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "mian",
+   "category_name": "棉",
+   "icon": "🌱",
+   "subgroups": [
+    {
+     "sub_name": "棉花（分产地·品级）",
+     "unit": "元/吨",
+     "source": "中国棉花信息网 / 中国棉花协会 2026-09-21",
+     "indicator_codes": [
+      "COT_新疆棉CCI",
+      "COT_新疆长绒棉",
+      "COT_埃及棉GIZ",
+      "COT_匹马棉SJV",
+      "COT_美棉EMOT",
+      "COT_澳棉SM",
+      "COT_郑州棉花期货"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "ma",
+   "category_name": "麻",
+   "icon": "🌿",
+   "subgroups": [
+    {
+     "sub_name": "苎麻原料",
+     "unit": "元/吨",
+     "source": "中国麻纺 / 四川大竹产区 2026",
+     "indicator_codes": [
+      "FLAX_苎麻原麻",
+      "FLAX_亚麻原麻",
+      "FLAX_21NM",
+      "FLAX_汉麻精干麻",
+      "FLAX_21NM_1"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "si",
+   "category_name": "丝",
+   "icon": "🧵",
+   "subgroups": [
+    {
+     "sub_name": "生丝",
+     "unit": "元/吨",
+     "source": "中国茧丝绸交易市场（金蚕网）/ 生意社 2026-09-21",
+     "indicator_codes": [
+      "SILK_22D",
+      "SILK_22D_1",
+      "SILK_22D_2",
+      "SILK_22D_3"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "mao",
+   "category_name": "毛",
+   "icon": "🐑",
+   "subgroups": [
+    {
+     "sub_name": "羊毛（分产地·细度）",
+     "unit": "元/吨",
+     "source": "南京羊毛市场 / 国内绒毛监测 2026",
+     "indicator_codes": [
+      "WOOL_110S",
+      "WOOL_100S",
+      "WOOL_国产细羊毛",
+      "WOOL_国产细羊毛_1",
+      "WOOL_南京羊毛市场"
+     ]
+    },
+    {
+     "sub_name": "羊绒",
+     "unit": "元/公斤",
+     "source": "绒毛交易市场 / 鄂尔多斯羊绒指数 2026",
+     "indicator_codes": [
+      "WOOL_15P5ΜM",
+      "WOOL_16NM_2",
+      "WOOL_18NM_2",
+      "WOOL_26NM_2",
+      "WOOL_13P5ΜM"
+     ]
+    },
+    {
+     "sub_name": "马海毛",
+     "unit": "元/公斤",
+     "source": "绒毛交易市场 / 马海毛行情 2026",
+     "indicator_codes": [
+      "WOOL_马海毛原毛",
+      "WOOL_16NM_2_1",
+      "WOOL_18NM_2_1",
+      "WOOL_110NM_2"
+     ]
+    },
+    {
+     "sub_name": "牦牛绒",
+     "unit": "元/公斤",
+     "source": "绒毛交易市场 / 牦牛绒行情 2026",
+     "indicator_codes": [
+      "WOOL_牦牛绒无毛绒",
+      "WOOL_16NM_2_2",
+      "WOOL_18NM_2_2",
+      "WOOL_28NM_2"
+     ]
+    },
+    {
+     "sub_name": "羊驼毛",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "WOOL_羊驼毛无毛绒",
+      "WOOL_60NM_2"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "rongyu",
+   "category_name": "羽绒",
+   "icon": "🪶",
+   "subgroups": [
+    {
+     "sub_name": "白鸭绒",
+     "unit": "元/公斤",
+     "source": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "indicator_codes": [
+      "DOWN_绒",
+      "DOWN_绒_1",
+      "DOWN_绒_2"
+     ]
+    },
+    {
+     "sub_name": "灰鸭绒",
+     "unit": "元/公斤",
+     "source": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "indicator_codes": [
+      "DOWN_绒_3",
+      "DOWN_绒_4",
+      "DOWN_绒_5"
+     ]
+    },
+    {
+     "sub_name": "白鹅绒",
+     "unit": "元/公斤",
+     "source": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "indicator_codes": [
+      "DOWN_绒_6",
+      "DOWN_绒_7",
+      "DOWN_绒_8"
+     ]
+    },
+    {
+     "sub_name": "灰鹅绒",
+     "unit": "元/公斤",
+     "source": "羽绒金网 / 中国羽绒信息网 2026-09-20",
+     "indicator_codes": [
+      "DOWN_绒_9",
+      "DOWN_绒_10",
+      "DOWN_绒_11"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "piymc",
+   "category_name": "皮毛草",
+   "icon": "🐄",
+   "subgroups": [
+    {
+     "sub_name": "头层牛皮",
+     "unit": "元/平方英尺",
+     "source": "温州/东莞皮革市场 2026",
+     "indicator_codes": []
+    },
+    {
+     "sub_name": "二层牛皮",
+     "unit": "元/平方英尺",
+     "source": "温州/东莞皮革市场 2026",
+     "indicator_codes": []
+    },
+    {
+     "sub_name": "牛毛皮/胎牛毛",
+     "unit": "元/平方英尺",
+     "source": "温州皮革市场 2026-06",
+     "indicator_codes": [
+      "FUR_胎牛毛皮",
+      "FUR_胎牛毛皮_1"
+     ]
+    },
+    {
+     "sub_name": "毛条（裘皮类镶边料）",
+     "unit": "元/条",
+     "source": "毛皮市场行情 / 崇福皮草城 2026",
+     "indicator_codes": [
+      "FUR_貉子毛条",
+      "FUR_貉子毛条_1",
+      "FUR_狐狸毛条",
+      "FUR_水貂毛条",
+      "FUR_兔毛条",
+      "FUR_羊羔毛条"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "fuliao",
+   "category_name": "辅料",
+   "icon": "🔗",
+   "subgroups": [
+    {
+     "sub_name": "铜（金属辅料原料）",
+     "unit": "元/吨",
+     "source": "上海期货交易所 / 长江有色金属网 / 生意社 2026-09-22",
+     "indicator_codes": [
+      "TRIM_沪铜主力合约",
+      "TRIM_黄铜带H",
+      "TRIM_紫铜线T"
+     ]
+    },
+    {
+     "sub_name": "拉链",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_拉链",
+      "TRIM_拉链_1"
+     ]
+    },
+    {
+     "sub_name": "纽扣",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_纽扣",
+      "TRIM_纽扣_1"
+     ]
+    },
+    {
+     "sub_name": "织带·衬布·胶条",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_织带",
+      "TRIM_衬布",
+      "TRIM_胶条"
+     ]
+    },
+    {
+     "sub_name": "标牌·洗水唛",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_吊牌",
+      "TRIM_洗水唛"
+     ]
+    },
+    {
+     "sub_name": "装饰纽扣·天然",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_贝壳纽扣",
+      "TRIM_牛骨纽扣",
+      "TRIM_椰壳纽扣",
+      "TRIM_木质纽扣",
+      "TRIM_羊角纽扣"
+     ]
+    },
+    {
+     "sub_name": "珠宝装饰·烫钻",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_水晶锆石烫钻",
+      "TRIM_珍珠",
+      "TRIM_玉石珠",
+      "TRIM_玻璃珠"
+     ]
+    },
+    {
+     "sub_name": "纸类辅料",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_牛皮纸",
+      "TRIM_杜邦纸",
+      "TRIM_艺术纸"
+     ]
+    },
+    {
+     "sub_name": "塑料配件",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_亚克力扣标",
+      "TRIM_ABS注塑扣",
+      "TRIM_PET织带"
+     ]
+    },
+    {
+     "sub_name": "弹性体",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "TRIM_橡胶丝",
+      "TRIM_硅胶标"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "shaxian",
+   "category_name": "纱线",
+   "icon": "🧶",
+   "subgroups": [
+    {
+     "sub_name": "纱线",
+     "unit": "",
+     "source": "中国棉花信息网 / 柯桥指数 2026-09-21",
+     "indicator_codes": [
+      "YARN_32S",
+      "YARN_40S",
+      "YARN_40S_1",
+      "YARN_45S",
+      "YARN_30S"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "fengrenxian",
+   "category_name": "缝纫线",
+   "icon": "🪡",
+   "subgroups": [
+    {
+     "sub_name": "缝纫线",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "SEW_40S",
+      "SEW_20S",
+      "SEW_70D",
+      "SEW_邦迪线"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "wujin",
+   "category_name": "五金",
+   "icon": "🔩",
+   "subgroups": [
+    {
+     "sub_name": "锌合金",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "HW_锌合金",
+      "HW_锌合金拉链头"
+     ]
+    },
+    {
+     "sub_name": "铜合金",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "HW_铜合金",
+      "HW_黄铜气眼铆钉"
+     ]
+    },
+    {
+     "sub_name": "铝合金·铁",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "HW_铝合金",
+      "HW_铁"
+     ]
+    }
+   ]
+  },
+  {
+   "category_code": "pige",
+   "category_name": "皮革",
+   "icon": "🟫",
+   "subgroups": [
+    {
+     "sub_name": "真皮",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "LEATHER_头层黄牛皮",
+      "LEATHER_头层黄牛皮_1",
+      "LEATHER_二层黄牛皮",
+      "LEATHER_头层羊皮",
+      "LEATHER_头层猪皮"
+     ]
+    },
+    {
+     "sub_name": "假皮",
+     "unit": "",
+     "source": "",
+     "indicator_codes": [
+      "LEATHER_PU合成革",
+      "LEATHER_PVC人造革"
+     ]
+    }
+   ]
+  }
+ ],
+ "trend_reports": [
+  {
+   "category": "化纤",
+   "content": "9 月原油冲高（布油一度逼近 100 美元）推动聚酯链全线上涨：华东 PTA 现货 7275 元/吨（柯桥 20260921 期口径、环比 +425）、MEG 7317 元/吨（+197）、有光切片 8980 元/吨（+680）。涤纶长丝 9 月全线上行（生意社 9/21）：POY 150D 9342（同比 +34%）、FDY 150D 9787（+36%）、DTY 150D 10602（+30%）元/吨，萧绍 POY 9755 / FDY 9945 / DTY 10625；涤纶短纤 8645~8802 元/吨。锦纶受己内酰胺（14300 元/吨）推动续涨：70D 系列 POY 15700、DTY 17700、FDY 15800 元/吨（切片 14900）。粘胶短纤 14520 元/吨盘整（同比 +10.7%）；腈纶短纤 15975、毛条 3D 16800 元/吨；氨纶 40D 29000 元/吨持稳（同比 +19.6%）。长丝产销率仅约 4 成、下游高价抵触，但聚酯工厂低库存挺价。采购建议：涤纶成本推涨、实单一单一谈，有秋冬订单未锁价的尽快分批锁价、勿用淡季价格接旺季订单；锦纶按订单节奏采购、关注切片涨势传导；粘胶同比偏高、按需跟进避免追高；氨纶平稳按需采购。"
+  },
+  {
+   "category": "羽绒",
+   "content": "新国标 GB/T 17685-2026 / GB/T 10288-2026 已于 9 月 1 日正式实施。9 月第 3 周（9/20）GB/T 14272-2021 口径 90% 白鸭绒 565 元/kg、90% 白鹅绒 985 元/kg（较 9 月初回落 0.3~0.4%、高位平稳整理）；QB/T 1193 口径 595.4 / 1040.8 元/kg；GB/T 17685 新标口径 579.4 / 1007.7 元/kg。高位下出货节奏放缓、金九大单未集中放量；原料毛供应偏紧、库存不大，成本仍有支撑，多数企业预计短期以稳为主、窄幅波动。采购建议：当前处高位整理期，结合订单适度分批采购、避免集中追高；有 95% 鹅绒订单的需关注新标对成本与定价的影响。"
+  },
+  {
+   "category": "棉·麻·丝",
+   "content": "新棉集中上市临近、金九需求兑现不足，棉价加速下行：CCIndex 3128B 9/21 报 17381 元/吨（月 -4.4%），郑棉主力 15870 / 15750 元/吨区间、创逾 5 个月新低；储备棉轮出第 9 周成交率 93.1%、折 3128B 成交均价 17447 元/吨；新疆开秤手摘棉约 8.3 元/公斤趋落、机采棉 9 月下旬集中采摘。长绒棉 137 级 25480 元/吨。纱线：普梳 32S 24000、精梳 40S 25600、CY Index C32S 23702 元/吨（9/20）。生丝 435600 元/吨（生意社 9/21、环比 +0.21%），秋茧集中上市、鲜茧价格指数环比 +1.67% 带动中低等级生丝阶段性抬升。采购建议：棉价新棉上市前承压，可暂缓集中补库、待开秤价企稳后分批点价；关注新疆减产实际兑现与储备棉轮出节奏；纱线按需补库；生丝按单锁价、跟踪秋茧成本传导。"
+  },
+  {
+   "category": "毛·特种动物纤维",
+   "content": "羊毛南京综合指数约 85 元/公斤；羊绒无毛绒（15.5μm）约 850 元/公斤、羊绒纱 16/18 支约 1000~1030 元/公斤；马海毛约 120 元/公斤、纱线 16/18 支约 185~190 元/公斤；牦牛绒约 600 元/公斤、纱线 16/18 支约 745~760 元/公斤，均高位平稳（纱支参考价按无毛绒基准+纺纱加工费推算，下单前以实际询价为准）。采购建议：特种动物纤维供应节奏偏紧、16/18 支主力纱支宜按订单锁量，避免旺季断供；澳毛较国产（内蒙/新疆）细毛溢价约 30%~40%，按支数需求与成本定位择产地。"
+  },
+  {
+   "category": "皮毛草",
+   "content": "头层黄牛皮纳帕约 24 元/SF，皮革原料小幅波动后趋稳；胎牛毛皮、毛皮条等报价分散、置信度略低。采购建议：维持按需采购，特殊毛皮按款锁样、关注进口皮草汇率与关税波动。"
+  },
+  {
+   "category": "五金·皮革",
+   "content": "锌合金压铸约 22 元/kg、铜合金（黄铜）拉链牙齿约 58 元/kg 持稳，关注锌/铜期货联动；头层黄牛皮（纳帕）约 24 元/SF 小幅波动、PU 合成革约 13 元/SF 价格平稳。采购建议：金属五金按款锁样、真皮按订单锁量，假皮可逢低备货。"
+  },
+  {
+   "category": "辅料·纱线·缝纫线",
+   "content": "柯桥 9/14 期监测：纯棉纱普梳 32S 23670 元/吨（环比 -10）、精梳 40S 25600 元/吨持平、气流纺 10S 16540 元/吨；混纺 T/C 65/35 16600 元/吨（环比 -20）、T/R 65/35 14700 元/吨持平；纯棉纱市场成交环比回缩、价格稳跌互现。拉链/纽扣/衬布等辅料价格基本稳定（柯桥辅料类价量环比微跌），牛角扣等天然材质小幅溢价。采购建议：辅料与纱线维持按需采购，棉纱随棉价走弱可适度观望、逢低补库；天然材质按款锁样；氨纶平稳按需跟进。"
+  },
+  {
+   "category": "采购总建议",
+   "content": "金九兑现不足、原料端成本分化：涤纶系受原油/聚酯成本推涨约 +10%（POY 9750、短纤 8550~8700 元/吨），有订单未锁价的尽快分批锁价；棉价新棉上市前承压（3128B 17544、郑棉创 5 个月新低），暂缓集中补库、待开秤价企稳分批点价；染料暴涨推升染费（详见面料加工库），深色/活性染品种下单前确认染费；羽绒高位整理（14272 口径鸭绒 569.9、鹅绒 987.8 元/kg）、按订单分批，关注 9/1 新国标对高绒规格成本的影响；生丝 435000 元/吨温和上行、按单锁价；锦纶续涨按订单采购；毛绒特种纤维按订单锁量；辅料/纱线/缝纫线按需采购、天然材质按款锁样。"
+  },
+  {
+   "category": "辅料·铜",
+   "content": "沪铜主力合约约 72800 元/吨，近 1 月涨约 3.3%、近 1 季涨约 6.3%、近 1 年涨约 10.3%；黄铜带 H62 约 56800 元/吨、紫铜线 T2 约 73500 元/吨。采购建议：拉链、四合扣等金属辅料铜用量占成本 30%~50%，铜价高位时宜与核心供应商签订铜价联动条款、锁量不锁价；低位可考虑备货锁价。"
+  }
+ ],
+ "reports": {
+  "collection": {
+   "summary": "本期采集覆盖 12 大类原料/辅料/五金皮革（棉·麻·丝·毛·化纤·羽绒·皮毛草·辅料·纱线·缝纫线·五金·皮革）、131 条报价，数据来源涵盖国家级行业协会、专业交易市场、指数平台及市场调研公开报价。整体采集置信度 84%，棉花/茧丝绸/羊毛等大宗品种来源权威、覆盖度高；五金/皮革/皮毛草与辅料装饰类市场调研报价分散、置信度略低。",
+   "confidence": 84,
+   "sources": [
+    {
+     "name": "中国棉花协会 / 国家棉花市场监测",
+     "type": "行业协会",
+     "coverage": "棉花",
+     "items": 8,
+     "confidence": 90,
+     "update_freq": "每日/每周"
+    },
+    {
+     "name": "中国茧丝绸交易市场（嘉兴）",
+     "type": "专业交易市场",
+     "coverage": "蚕丝",
+     "items": 4,
+     "confidence": 88,
+     "update_freq": "每周"
+    },
+    {
+     "name": "南京羊毛市场",
+     "type": "专业交易市场",
+     "coverage": "羊毛/羊绒",
+     "items": 5,
+     "confidence": 86,
+     "update_freq": "每周"
+    },
+    {
+     "name": "羽绒金网 / 中国羽绒信息网",
+     "type": "行业平台",
+     "coverage": "羽绒",
+     "items": 28,
+     "confidence": 82,
+     "update_freq": "半月"
+    },
+    {
+     "name": "中国化纤信息网 / 中纤网",
+     "type": "行业平台",
+     "coverage": "化纤",
+     "items": 9,
+     "confidence": 84,
+     "update_freq": "每日"
+    },
+    {
+     "name": "中国麻纺协会 / 麻纺市场",
+     "type": "行业协会",
+     "coverage": "麻",
+     "items": 3,
+     "confidence": 78,
+     "update_freq": "月度"
+    },
+    {
+     "name": "服装辅料市场行情",
+     "type": "市场调研",
+     "coverage": "辅料（拉链/纽扣/衬布/胶条/吊牌/洗水唛）",
+     "items": 9,
+     "confidence": 80,
+     "update_freq": "月度"
+    },
+    {
+     "name": "皮毛草市场行情",
+     "type": "市场调研",
+     "coverage": "皮毛草（牛皮/胎牛毛皮/毛皮条）",
+     "items": 8,
+     "confidence": 72,
+     "update_freq": "月度"
+    },
+    {
+     "name": "服装五金市场行情",
+     "type": "市场调研",
+     "coverage": "五金（锌合金/铜合金/铝合金/铁）",
+     "items": 6,
+     "confidence": 78,
+     "update_freq": "月度"
+    },
+    {
+     "name": "皮革市场行情",
+     "type": "市场调研",
+     "coverage": "皮革（真皮牛/羊/猪皮·假皮PU/PVC）",
+     "items": 6,
+     "confidence": 80,
+     "update_freq": "月度"
+    },
+    {
+     "name": "辅料装饰·纸类·塑料行情",
+     "type": "市场调研",
+     "coverage": "辅料（装饰纽扣/珠宝烫钻/纸类/亚克力·ABS/PET/橡胶硅胶）",
+     "items": 17,
+     "confidence": 80,
+     "update_freq": "月度"
+    },
+    {
+     "name": "棉纺/纱线市场行情",
+     "type": "行业协会/市场调研",
+     "coverage": "纱线（棉纱/混纺/粘胶纱）",
+     "items": 5,
+     "confidence": 82,
+     "update_freq": "每周"
+    },
+    {
+     "name": "缝制辅料市场行情",
+     "type": "市场调研",
+     "coverage": "缝纫线（涤纶/尼龙/邦迪线）",
+     "items": 4,
+     "confidence": 82,
+     "update_freq": "月度"
+    }
+   ]
+  },
+  "diagnosis": {
+   "summary": "原料端分化明显：化纤受原油成本推动震荡上行、粘纤反弹；羽绒自 6 月高点回落、8 月备货季前有望企稳；棉花弱势震荡、储备棉轮出补充供给；羊毛/羊绒等特种纤维高位平稳。成本传导以原油系（涤纶/锦纶）为主，农产品类（棉麻丝毛）季节性偏弱。",
+   "dimensions": [
+    {
+     "name": "价格趋势",
+     "score": 58,
+     "label": "震荡分化",
+     "detail": "化纤上行、羽绒回落、棉麻丝毛平稳，整体呈结构性分化而非单边"
+    },
+    {
+     "name": "供需格局",
+     "score": 50,
+     "label": "松紧并存",
+     "detail": "化纤/羽绒供给宽松，羊毛羊绒等特种纤维供应偏紧、宜按单锁量"
+    },
+    {
+     "name": "成本传导",
+     "score": 70,
+     "label": "上行承压",
+     "detail": "原油反弹推聚酯原料上行，涤纶/锦纶成本端承压但跟涨受限"
+    },
+    {
+     "name": "季节性因素",
+     "score": 62,
+     "label": "旺季前置",
+     "detail": "秋冬订单前置带动羽绒/毛绒备货，8 月起需求边际回暖"
+    },
+    {
+     "name": "宏观政策",
+     "score": 55,
+     "label": "中性偏松",
+     "detail": "储备棉轮出补充供给、棉价承压；进口配额与内外价差主导波动"
+    }
+   ]
+  },
+  "alert": {
+   "summary": "本期识别 1 个预警节点、2 个重点跟踪、2 个关注项。原油系原料成本传导为最大风险源，羽绒 8 月备货季前价格拐点需重点跟踪，棉花政策（储备棉轮出）与特种纤维供应为关注项。",
+   "factors": [
+    {
+     "name": "原油系原料成本传导",
+     "score": 78,
+     "level": "预警",
+     "detail": "原油反弹+PTA 偏暖→涤纶/锦纶成本上行，下游跟涨乏力、利润承压"
+    },
+    {
+     "name": "羽绒8月备货价格拐点",
+     "score": 68,
+     "level": "重点跟踪",
+     "detail": "自6月高点回落约 5%，8月秋冬备货临近有望企稳回升，关注原毛价格拐点"
+    },
+    {
+     "name": "棉花政策（储备棉轮出）",
+     "score": 60,
+     "level": "重点跟踪",
+     "detail": "储备棉轮出补充供给、棉价承压，关注轮出节奏与新棉长势、内外价差"
+    },
+    {
+     "name": "特种动物纤维供应偏紧",
+     "score": 52,
+     "level": "关注",
+     "detail": "羊绒/马海毛/牦牛绒供应节奏偏紧、宜按单锁量，避免旺季断供"
+    },
+    {
+     "name": "进口依赖与汇率",
+     "score": 35,
+     "level": "低风险",
+     "detail": "澳毛/美棉/进口皮草受汇率与关税影响，整体可控但需跟踪 301 关税落地"
+    }
+   ]
+  },
+  "insight": {
+   "summary": "本期价格趋势呈现结构性分化：化纤链全线上涨（粘纤+10.4%、涤纶+8.9%、腈纶+6.3%、锦纶+5.9%），羽绒进入备货窗口期价格回落（-5.0%），毛纺原料供应偏紧（羊毛/羊绒主力品种需重点关注），铜价高位震荡影响辅料成本。建议启动 A 类战略物料（羊毛/羊绒/羽绒/棉）分级价格管理，化纤链高位以控风险为主，羽绒把握低位窗口前置锁量，铜通过供应商价格联动条款传导波动。综合置信度 84/100。",
+   "takeaways": [
+    {
+     "tag": "行动",
+     "text": "立即启动 A 类战略物料价格管理体系建设：建立羊毛/羊绒/羽绒/棉花四大品类周度跟踪机制，设定 ±3%/±5%/±8% 三级预警阈值，明确品类经理→采购经理→供应链总监三级响应权限"
+    },
+    {
+     "tag": "行动",
+     "text": "羽绒进入备货窗口期，85/90/95 绒子含量主力规格前置锁量，建议分 3 批锁定 60-80% 旺季用量，目标节约率 ≥ 5%，对应核算口径：基准价取 2025 年同期均价"
+    },
+    {
+     "tag": "行动",
+     "text": "化纤链（粘纤/涤纶/腈纶/锦纶）高位运行，执行「按需采购 + 加快周转」策略，油价 ±10% 触发化纤价格评审，避免高位囤货；同步评估再生纤维替代方案"
+    },
+    {
+     "tag": "跟踪",
+     "text": "铜价高位震荡（沪铜 7.28 万/吨，近 1 月 +3.3%），拉链、四合扣等金属辅料铜用量占成本 30%-50%。建议与核心辅料供应商签订铜价联动条款（锁量不锁价），建立季度价格评审机制"
+    },
+    {
+     "tag": "体系",
+     "text": "Q4 价格管理体系建设里程碑：10 月完成 ABC 分类与三级预警制度发布，11 月完成核心供应商价格联动条款模板落地，12 月完成首次季度价格策略评审会"
+    }
+   ],
+   "confidence": 84
+  },
+  "riskMap": {
+   "summary": "本期 5 个监控节点中，原油系原料成本传导为最高风险（预警，78），羽绒备货拐点与棉花政策为重点跟踪，特种纤维供应与汇率需关注。整体风险可控，建议建立周度复盘机制。",
+   "topRisk": "原油系原料成本传导",
+   "nodes": [
+    {
+     "name": "原油系原料成本传导",
+     "level": "预警",
+     "score": 78,
+     "action": "锁价或成本联动条款，跟踪 PTA 与聚酯原料走势"
+    },
+    {
+     "name": "羽绒8月备货价格拐点",
+     "level": "重点跟踪",
+     "score": 68,
+     "action": "前置锁量、分批采购，关注原毛价格拐点"
+    },
+    {
+     "name": "棉花政策（储备棉轮出）",
+     "level": "重点跟踪",
+     "score": 60,
+     "action": "跟踪轮出节奏与新棉长势、内外价差"
+    },
+    {
+     "name": "特种动物纤维供应偏紧",
+     "level": "关注",
+     "score": 52,
+     "action": "按单锁量，避免旺季断供"
+    },
+    {
+     "name": "进口依赖与汇率",
+     "level": "低风险",
+     "score": 35,
+     "action": "跟踪 301 关税与汇率波动，整体可控"
+    }
+   ]
+  }
+ }
+}
